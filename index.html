@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md. Nasir Uddin — Senior SQA Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cyan: #00f5ff;
+    --cyan-dim: #00b8c4;
+    --green: #00ff88;
+    --purple: #7b2fff;
+    --bg: #020610;
+    --bg2: #070d1a;
+    --bg3: #0a1428;
+    --card: rgba(0,245,255,0.04);
+    --border: rgba(0,245,255,0.15);
+    --text: #c8e0ff;
+    --text-dim: #6a8aaa;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom Cursor */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--cyan);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.2s, height 0.2s;
+    box-shadow: 0 0 20px var(--cyan), 0 0 40px var(--cyan);
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(0,245,255,0.5);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease-out, width 0.3s, height 0.3s;
+  }
+
+  /* Grid Background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,245,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,245,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Glow orbs */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: 0;
+    animation: orbFloat 8s ease-in-out infinite;
+  }
+  .orb1 { width: 500px; height: 500px; background: rgba(0,245,255,0.06); top: -200px; right: -100px; animation-delay: 0s; }
+  .orb2 { width: 400px; height: 400px; background: rgba(123,47,255,0.07); bottom: 20%; left: -150px; animation-delay: -3s; }
+  .orb3 { width: 300px; height: 300px; background: rgba(0,255,136,0.05); top: 50%; right: 10%; animation-delay: -5s; }
+
+  @keyframes orbFloat {
+    0%,100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-40px) scale(1.05); }
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(2,6,16,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Orbitron', monospace;
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--cyan);
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px var(--cyan);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--cyan);
+    transition: width 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--cyan); }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* SECTIONS */
+  section { position: relative; z-index: 1; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 60px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-content { max-width: 700px; }
+
+  .hero-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--green);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 40px; height: 1px;
+    background: var(--green);
+    box-shadow: 0 0 10px var(--green);
+  }
+
+  .hero-name {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: #fff;
+    text-shadow: 0 0 60px rgba(0,245,255,0.3);
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero-name span {
+    color: var(--cyan);
+    text-shadow: 0 0 30px var(--cyan), 0 0 60px rgba(0,245,255,0.4);
+  }
+
+  .hero-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(18px, 3vw, 28px);
+    font-weight: 300;
+    color: var(--text-dim);
+    margin-top: 16px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-title strong {
+    color: var(--cyan-dim);
+    font-weight: 600;
+  }
+
+  .hero-desc {
+    margin-top: 32px;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-dim);
+    max-width: 560px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .hero-btns {
+    margin-top: 48px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 1s forwards;
+  }
+
+  .btn-primary {
+    padding: 14px 36px;
+    background: transparent;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    font-family: 'Orbitron', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--cyan);
+    transform: translateX(-101%);
+    transition: transform 0.3s;
+    z-index: -1;
+  }
+
+  .btn-primary:hover { color: var(--bg); }
+  .btn-primary:hover::before { transform: translateX(0); }
+
+  .btn-secondary {
+    padding: 14px 36px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: 'Orbitron', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+  }
+
+  /* Hero HUD elements */
+  .hero-hud {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    opacity: 0;
+    animation: fadeIn 1.2s 1.2s forwards;
+  }
+
+  .hud-ring {
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    position: relative;
+    animation: spin 20s linear infinite;
+  }
+
+  .hud-ring::before {
+    content: '';
+    position: absolute;
+    top: -3px; left: 50%;
+    width: 6px; height: 6px;
+    background: var(--cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--cyan);
+    transform: translateX(-50%);
+  }
+
+  .hud-ring-inner {
+    position: absolute;
+    inset: 20px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,245,255,0.08);
+    animation: spin 14s linear infinite reverse;
+  }
+
+  .hud-ring-inner::before {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 50%;
+    width: 4px; height: 4px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--green);
+    transform: translateX(-50%);
+  }
+
+  .hud-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: spin 20s linear infinite reverse;
+  }
+
+  .hud-center .years {
+    font-family: 'Orbitron', monospace;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--cyan);
+    text-shadow: 0 0 30px var(--cyan);
+    line-height: 1;
+  }
+
+  .hud-center .years-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 3px;
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  /* Stats bar */
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    opacity: 0;
+    animation: fadeUp 0.8s 1.2s forwards;
+  }
+
+  .stat-item { text-align: left; }
+
+  .stat-num {
+    font-family: 'Orbitron', monospace;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--cyan);
+    text-shadow: 0 0 20px var(--cyan);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* SECTION COMMONS */
+  .section-wrap {
+    padding: 100px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    margin-bottom: 70px;
+  }
+
+  .section-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--cyan);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-tag::before {
+    content: '';
+    width: 30px; height: 1px;
+    background: var(--cyan);
+  }
+
+  .section-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 2px;
+  }
+
+  /* SKILLS */
+  #skills { background: var(--bg2); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .skill-category {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .skill-category:hover {
+    border-color: var(--cyan);
+    transform: translateY(-4px);
+  }
+
+  .skill-category::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--cyan), transparent);
+  }
+
+  .skill-cat-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--cyan);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .skill-tag {
+    padding: 6px 14px;
+    background: rgba(0,245,255,0.06);
+    border: 1px solid rgba(0,245,255,0.2);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--text);
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    clip-path: polygon(4px 0%, 100% 0%, calc(100% - 4px) 100%, 0% 100%);
+  }
+
+  .skill-tag:hover {
+    background: rgba(0,245,255,0.15);
+    border-color: var(--cyan);
+    color: var(--cyan);
+  }
+
+  /* EXPERIENCE */
+  #experience { background: var(--bg); }
+
+  .timeline {
+    position: relative;
+    padding-left: 40px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--cyan), var(--purple), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 60px;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+
+  .timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -46px;
+    top: 8px;
+    width: 12px; height: 12px;
+    background: var(--cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--cyan), 0 0 40px rgba(0,245,255,0.3);
+  }
+
+  .timeline-dot.current {
+    background: var(--green);
+    box-shadow: 0 0 20px var(--green), 0 0 40px rgba(0,255,136,0.3);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 20px var(--green), 0 0 40px rgba(0,255,136,0.3); }
+    50% { box-shadow: 0 0 30px var(--green), 0 0 60px rgba(0,255,136,0.5); }
+  }
+
+  .timeline-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 32px;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+    transition: border-color 0.3s;
+  }
+
+  .timeline-card:hover { border-color: var(--cyan); }
+
+  .timeline-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .timeline-company {
+    font-family: 'Orbitron', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  .timeline-period {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--cyan);
+    letter-spacing: 2px;
+    padding: 4px 12px;
+    border: 1px solid rgba(0,245,255,0.3);
+    background: rgba(0,245,255,0.05);
+  }
+
+  .timeline-role {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--cyan-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .timeline-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .timeline-points li {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .timeline-points li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--cyan);
+    font-size: 11px;
+  }
+
+  .current-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    background: rgba(0,255,136,0.1);
+    border: 1px solid rgba(0,255,136,0.3);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--green);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+
+  .current-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  /* PROJECTS */
+  #projects { background: var(--bg2); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+    transition: all 0.3s;
+  }
+
+  .project-card:hover {
+    border-color: var(--cyan);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0,245,255,0.1);
+  }
+
+  .project-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 24px; height: 24px;
+    background: var(--border);
+    clip-path: polygon(0 0, 100% 100%, 100% 0);
+    transition: background 0.3s;
+  }
+
+  .project-card:hover::after { background: var(--cyan); }
+
+  .project-num {
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    color: rgba(0,245,255,0.3);
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+  }
+
+  .project-name {
+    font-family: 'Orbitron', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .project-desc {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tech-pill {
+    padding: 3px 10px;
+    background: rgba(123,47,255,0.15);
+    border: 1px solid rgba(123,47,255,0.3);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: #b388ff;
+    letter-spacing: 1px;
+  }
+
+  /* EDUCATION */
+  #education { background: var(--bg); }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .edu-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+  }
+
+  .edu-card:hover {
+    border-color: rgba(123,47,255,0.5);
+    transform: translateY(-4px);
+  }
+
+  .edu-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--purple), transparent);
+  }
+
+  .edu-year {
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    color: var(--purple);
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+  }
+
+  .edu-degree {
+    font-family: 'Orbitron', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+
+  .edu-school {
+    font-size: 14px;
+    color: var(--cyan-dim);
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .edu-gpa {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--green);
+    letter-spacing: 2px;
+  }
+
+  /* ABOUT / PERSONAL */
+  #about { background: var(--bg2); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .about-text p {
+    font-size: 16px;
+    color: var(--text-dim);
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+
+  .about-text p span { color: var(--cyan); font-weight: 600; }
+
+  .about-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+    transition: border-color 0.3s;
+  }
+
+  .detail-item:hover { border-color: var(--cyan); }
+
+  .detail-icon {
+    font-size: 22px;
+    line-height: 1;
+    min-width: 30px;
+  }
+
+  .detail-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .detail-value {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  /* ACHIEVEMENTS */
+  .achievements {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .achievement-item {
+    padding: 20px 24px;
+    background: rgba(0,255,136,0.04);
+    border: 1px solid rgba(0,255,136,0.15);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+    color: var(--text-dim);
+    transition: all 0.3s;
+  }
+
+  .achievement-item:hover {
+    border-color: var(--green);
+    color: var(--text);
+  }
+
+  .achievement-item::before {
+    content: '★';
+    color: var(--green);
+    font-size: 16px;
+    min-width: 20px;
+  }
+
+  /* CONTACT */
+  #contact { background: var(--bg); }
+
+  .contact-wrap {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact-wrap p {
+    font-size: 17px;
+    color: var(--text-dim);
+    line-height: 1.8;
+    margin-bottom: 48px;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  }
+
+  .contact-link:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+    box-shadow: 0 0 30px rgba(0,245,255,0.15);
+    transform: translateY(-3px);
+  }
+
+  .contact-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 48px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    color: var(--text-dim);
+    text-decoration: none;
+    padding: 16px 36px;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+
+  .contact-email:hover {
+    color: var(--cyan);
+    border-color: var(--cyan);
+    box-shadow: 0 0 40px rgba(0,245,255,0.1);
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 40px 60px;
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  footer p {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  footer span { color: var(--cyan); }
+
+  /* Scanline effect */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.03) 2px,
+      rgba(0,0,0,0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 9997;
+  }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 60px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 3px;
+    opacity: 0;
+    animation: fadeIn 1s 1.5s forwards;
+  }
+
+  .scroll-line {
+    width: 60px; height: 1px;
+    background: linear-gradient(90deg, var(--cyan), transparent);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: var(--cyan);
+    animation: scrollAnim 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollAnim {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 20px 30px; }
+    .nav-links { display: none; }
+    #hero { padding: 120px 30px 60px; }
+    .hero-hud { display: none; }
+    .section-wrap { padding: 80px 30px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 24px; }
+    footer { padding: 40px 30px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MNU//</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-tag">// SQA ENGINEER — FINTECH</div>
+    <h1 class="hero-name">MD. NASIR<br><span>UDDIN</span></h1>
+    <div class="hero-title">Senior <strong>SQA Engineer</strong> · Kona Software Lab</div>
+    <p class="hero-desc">
+      Ensuring flawless quality in fintech and banking systems. Specialized in test automation, API testing, performance engineering, and security compliance for high-stakes financial applications.
+    </p>
+    <div class="hero-btns">
+      <a href="#experience" class="btn-primary">View Experience</a>
+      <a href="#contact" class="btn-secondary">Get In Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Tools Mastered</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Banking Apps</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-hud">
+    <div class="hud-ring">
+      <div class="hud-ring-inner"></div>
+      <div class="hud-center">
+        <div class="years">SQA</div>
+        <div class="years-label">QUALITY<br>ASSURANCE</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    SCROLL TO EXPLORE
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-tag">// Core Competencies</div>
+      <h2 class="section-title">SKILLS &amp; TOOLS</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <div class="skill-cat-title">🧪 Testing</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Manual Testing</span>
+          <span class="skill-tag">Test Automation</span>
+          <span class="skill-tag">API Testing</span>
+          <span class="skill-tag">Integration Testing</span>
+          <span class="skill-tag">Regression Testing</span>
+          <span class="skill-tag">UAT</span>
+          <span class="skill-tag">Load Testing</span>
+          <span class="skill-tag">Performance Testing</span>
+          <span class="skill-tag">Security Testing</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">🛠️ Tools & Frameworks</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Selenium</span>
+          <span class="skill-tag">Robot Framework</span>
+          <span class="skill-tag">Postman</span>
+          <span class="skill-tag">SoapUI</span>
+          <span class="skill-tag">JMeter</span>
+          <span class="skill-tag">Burp Suite</span>
+          <span class="skill-tag">TestRail</span>
+          <span class="skill-tag">Jira</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">💻 Programming</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">C#</span>
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">JavaScript</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">🤖 Advanced</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Machine Learning</span>
+          <span class="skill-tag">Artificial Intelligence</span>
+          <span class="skill-tag">Data Analysis</span>
+          <span class="skill-tag">Data Visualization</span>
+          <span class="skill-tag">Database Management</span>
+          <span class="skill-tag">Microservices</span>
+          <span class="skill-tag">SDLC / STLC</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-tag">// Career Timeline</div>
+      <h2 class="section-title">EXPERIENCE</h2>
+    </div>
+    <div class="timeline">
+
+      <!-- Kona Software Lab -->
+      <div class="timeline-item" id="tl1">
+        <div class="timeline-dot current"></div>
+        <div class="timeline-card">
+          <div class="current-badge">CURRENTLY WORKING HERE</div>
+          <div class="timeline-top">
+            <div class="timeline-company">Kona Software Lab Ltd.</div>
+            <div class="timeline-period">JULY 2025 — PRESENT</div>
+          </div>
+          <div class="timeline-role">Senior SQA Engineer</div>
+          <ul class="timeline-points">
+            <li>Collaborated with cross-functional teams using Jira for project management, issue tracking, and sprint planning.</li>
+            <li>Contributed to banking projects including Dutch-Bangla Bank's NexusPay and Mercantile Bank's MBL Rainbow banking app, ensuring system quality, security compliance, and user satisfaction.</li>
+            <li>Designed, executed, and maintained test cases in TestRail, ensuring traceability and full test coverage.</li>
+            <li>Performed manual and automated testing for fintech and mobile financial service apps built on microservices architecture.</li>
+            <li>Conducted API testing, integration testing, regression testing, and log analysis for stability and performance.</li>
+            <li>Executed load and performance testing to validate system reliability under high transaction volumes.</li>
+            <li>Analyzed and troubleshot live production issues, collaborating with developers and DevOps for quick resolution.</li>
+            <li>Facilitated User Acceptance Testing (UAT) with clients and business teams, ensuring product readiness before release.</li>
+            <li>Mentored junior QA engineers on testing methodologies, fintech product knowledge, and best practices.</li>
+            <li>Ensured quality delivery, regulatory compliance, and security standards for financial applications.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TigerIT Senior SQA -->
+      <div class="timeline-item" id="tl2">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <div class="timeline-company">TigerIT Bangladesh Ltd.</div>
+            <div class="timeline-period">FEB 2025 — JUL 2025</div>
+          </div>
+          <div class="timeline-role">Senior Software Engineer QA</div>
+          <ul class="timeline-points">
+            <li>Spearheaded quality and process improvement initiatives, implementing new standards and policies across the QA team.</li>
+            <li>Managed assigned projects from beginning to end, ensuring quality, timeliness, and budget adherence.</li>
+            <li>Mentored and guided junior engineers, fostering knowledge sharing and collaboration.</li>
+            <li>Participated in code reviews and design discussions, providing valuable feedback and suggestions.</li>
+            <li>Coordinated effectively with internal stakeholders and clients to gather requirements and address concerns.</li>
+            <li>Communicated testing findings and recommendations to both technical and non-technical audiences.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TigerIT SQA -->
+      <div class="timeline-item" id="tl2b">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <div class="timeline-company">TigerIT Bangladesh Ltd.</div>
+            <div class="timeline-period">OCT 2022 — FEB 2025</div>
+          </div>
+          <div class="timeline-role">Software Engineer QA</div>
+          <ul class="timeline-points">
+            <li>Designed, developed, and executed manual and automated test cases for various functionalities (smoke, black box, API, etc.) using Postman, SoapUI, Burp Suite, Selenium, and Robot Framework.</li>
+            <li>Contributed to government projects including Prisoner Inmate Database System (PIDS) and Managed ICT Support Service for ICT & e-Governance, ensuring system quality, security compliance, and user satisfaction.</li>
+            <li>Analyzed Software Requirement Specifications, creating clear test plans and mapping features to user personas.</li>
+            <li>Documented bugs and defects in detail, facilitating efficient communication with development teams.</li>
+            <li>Executed database queries to verify data integrity and performance, contributing to system robustness.</li>
+            <li>Conducted load testing with JMeter to assess performance under high user loads and identify bottlenecks.</li>
+            <li>Used user manuals and data flow/use case diagrams to optimize testing processes and understanding.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Orion Group Senior Officer -->
+      <div class="timeline-item" id="tl3">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <div class="timeline-company">Orion Group</div>
+            <div class="timeline-period">JUN 2022 — AUG 2022</div>
+          </div>
+          <div class="timeline-role">Senior Officer — IT Corporate Affairs &amp; SAP PM Consultant</div>
+          <ul class="timeline-points">
+            <li>Led cross-functional teams to implement an ERP system, streamlining communication and processes across departments.</li>
+            <li>Identified and resolved software performance issues, ensuring system efficiency and uptime.</li>
+            <li>Trained users on new software and features, promoting adoption and proficiency organization-wide.</li>
+            <li>Gathered requirements, analyzed data, and collaborated with vendors for successful software customization.</li>
+            <li>Provided ongoing support and guidance to both end users and technical teams.</li>
+            <li>Implemented SAP PM module configurations, aligning plant maintenance workflows with business requirements.</li>
+            <li>Coordinated SAP PM data migration and cutover activities, ensuring a seamless transition with minimal disruption to operations.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Padma Bank -->
+      <div class="timeline-item" id="tl4">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <div class="timeline-company">Padma Bank PLC.</div>
+            <div class="timeline-period">MAY 2022</div>
+          </div>
+          <div class="timeline-role">Junior Trainee Officer</div>
+          <ul class="timeline-points">
+            <li>Developed and maintained Android applications as part of the bank's digital transformation initiative, contributing to improved customer-facing mobile services.</li>
+            <li>Collaborated with the development team to design, test, and deploy Android features aligned with banking workflows and compliance requirements.</li>
+            <li>Assisted in debugging and optimizing existing Android codebases, enhancing app stability and performance for end users.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Orion Intern -->
+      <div class="timeline-item" id="tl5">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <div class="timeline-company">Orion Group</div>
+            <div class="timeline-period">OCT 2021 — FEB 2022</div>
+          </div>
+          <div class="timeline-role">Software Engineer Intern</div>
+          <ul class="timeline-points">
+            <li>Streamlined HTML, CSS, and JavaScript for faster loading and improved user experience.</li>
+            <li>Created comprehensive documentation for supported systems and applications, facilitating smooth onboarding and training for new and existing members.</li>
+            <li>Performed in-depth system impact analysis, documented business requirements, and implemented effective solutions to address challenges.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-tag">// Notable Work</div>
+      <h2 class="section-title">PROJECTS</h2>
+    </div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-num">// PROJECT 001</div>
+        <div class="project-name">Innovative Mask Detection & Distance Monitor</div>
+        <p class="project-desc">AI-powered system for social distancing and face mask detection during COVID-19. Uses deep neural networks and computer vision for real-time monitoring.</p>
+        <div class="project-tech">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">TensorFlow</span>
+          <span class="tech-pill">Keras</span>
+          <span class="tech-pill">MobileNetV2</span>
+          <span class="tech-pill">OpenCV</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">// PROJECT 002</div>
+        <div class="project-name">BashaBari — Smart Housing Platform</div>
+        <p class="project-desc">Android application bridging homeowners and tenants. Enables seamless communication and manages all essential housing-related operations through a unified platform.</p>
+        <div class="project-tech">
+          <span class="tech-pill">Android</span>
+          <span class="tech-pill">Java</span>
+          <span class="tech-pill">Firebase</span>
+          <span class="tech-pill">Mobile Dev</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">// PROJECT 003</div>
+        <div class="project-name">Gadget Blast — E-Commerce Platform</div>
+        <p class="project-desc">Full-featured e-commerce website for an electronics retail shop. Supports product listings, cart management, and a complete shopping experience.</p>
+        <div class="project-tech">
+          <span class="tech-pill">HTML</span>
+          <span class="tech-pill">CSS</span>
+          <span class="tech-pill">JavaScript</span>
+          <span class="tech-pill">Web Dev</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-tag">// Academic Background</div>
+      <h2 class="section-title">EDUCATION</h2>
+    </div>
+    <div class="edu-grid">
+
+      <div class="edu-card">
+        <div class="edu-year">2022 — 2024</div>
+        <div class="edu-degree">Professional Masters in Information Technology</div>
+        <div class="edu-school">Jahangirnagar University</div>
+        <div class="edu-gpa">CGPA: 3.38 / 4.00</div>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-year">GRADUATED 2022</div>
+        <div class="edu-degree">B.Sc. in Computer Science & Engineering</div>
+        <div class="edu-school">North South University</div>
+        <div class="edu-gpa">CGPA: 3.30 / 4.00</div>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-year">2017</div>
+        <div class="edu-degree">Higher Secondary Certificate (HSC)</div>
+        <div class="edu-school">Dhaka City College</div>
+        <div class="edu-gpa">GPA: 5.00 / 5.00</div>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-year">2015</div>
+        <div class="edu-degree">Secondary School Certificate (SSC)</div>
+        <div class="edu-school">Monipur High School & College</div>
+        <div class="edu-gpa">GPA: 5.00 / 5.00</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-tag">// About Me</div>
+      <h2 class="section-title">WHO I AM</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a <span>Senior SQA Engineer</span> with a passion for ensuring software quality in high-stakes environments. Currently at <span>Kona Software Lab Ltd.</span>, I work on critical banking applications — including NexusPay and MBL Rainbow — where quality is non-negotiable.
+        </p>
+        <p>
+          My background in <span>Computer Science from North South University</span> and a <span>Masters in IT from Jahangirnagar University</span> gives me a strong foundation in both theoretical and applied software engineering.
+        </p>
+        <p>
+          Beyond testing, I'm deeply interested in <span>Artificial Intelligence, Machine Learning, and Data Science</span>. I love photography, gaming, and have even published magazines — BICCHURON and KOLOTAN.
+        </p>
+      </div>
+      <div class="about-details">
+        <div class="detail-item">
+          <div class="detail-icon">📍</div>
+          <div>
+            <div class="detail-label">Location</div>
+            <div class="detail-value">Mirpur, Dhaka, Bangladesh</div>
+          </div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon">🌐</div>
+          <div>
+            <div class="detail-label">Languages</div>
+            <div class="detail-value">Bengali (Native) · English (Proficient)</div>
+          </div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon">🎯</div>
+          <div>
+            <div class="detail-label">Interests</div>
+            <div class="detail-value">Photography · Gaming · AI Research</div>
+          </div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon">🏅</div>
+          <div>
+            <div class="detail-label">Certifications</div>
+            <div class="detail-value">Udemy · Kaggle · Analytics Vidhya</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="achievements">
+      <div class="achievement-item">University Football Cup Award — 2018</div>
+      <div class="achievement-item">Multiple Photography & Drawing Prizes</div>
+      <div class="achievement-item">Published Magazines: BICCHURON & KOLOTAN</div>
+      <div class="achievement-item">IEEE "Fun with Robot" Participant</div>
+      <div class="achievement-item">NSU Problem Solving Contest</div>
+      <div class="achievement-item">Data Science Path — Analytics Vidhya 2020</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-wrap">
+    <div class="section-header" style="text-align:center;">
+      <div class="section-tag" style="justify-content:center;">// Get In Touch</div>
+      <h2 class="section-title">CONTACT</h2>
+    </div>
+    <div class="contact-wrap">
+      <p>Open to exciting opportunities, collaborations, and conversations about software quality, fintech, or AI. Let's connect!</p>
+      <div class="contact-links">
+        <a href="https://bd.linkedin.com/in/md-nasir-uddin-a650851a8" target="_blank" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LINKEDIN
+        </a>
+        <a href="https://github.com/nasirsunny50" target="_blank" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          GITHUB
+        </a>
+        <a href="https://www.facebook.com/sup.sun" target="_blank" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          FACEBOOK
+        </a>
+        <a href="https://www.instagram.com/nasir___sunny" target="_blank" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          INSTAGRAM
+        </a>
+      </div>
+      <a href="mailto:nasirsunny50@gmail.com" class="contact-email">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        nasirsunny50@gmail.com
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© <span>Md. Nasir Uddin</span> — Engineered with precision. Tested to perfection.</p>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+
+  function animRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.width = '20px';
+      cursor.style.height = '20px';
+      ring.style.width = '50px';
+      ring.style.height = '50px';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.width = '12px';
+      cursor.style.height = '12px';
+      ring.style.width = '36px';
+      ring.style.height = '36px';
+    });
+  });
+
+  // Scroll reveal for timeline
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 100);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
+
+  // Typing effect for hero tag
+  const tag = document.querySelector('.hero-tag');
+  const text = '// SQA ENGINEER — FINTECH';
+  tag.textContent = '';
+  tag.style.opacity = 1;
+  let i = 0;
+  setTimeout(() => {
+    const type = () => {
+      if (i < text.length) {
+        tag.textContent = text.slice(0, ++i);
+        setTimeout(type, 50);
+      }
+    };
+    type();
+  }, 400);
+
+  // Glitch effect on hover for section titles
+  document.querySelectorAll('.section-title').forEach(title => {
+    title.addEventListener('mouseenter', function() {
+      this.style.textShadow = '2px 0 #ff0040, -2px 0 #00f5ff';
+      setTimeout(() => {
+        this.style.textShadow = '';
+      }, 200);
+    });
+  });
+</script>
+</body>
+</html>

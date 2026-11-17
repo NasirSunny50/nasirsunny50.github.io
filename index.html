@@ -694,6 +694,9 @@ section { position:relative; z-index:1; }
 .pc-body p { max-width:85%; padding:8px 11px; border-radius:12px; margin:0; }
 .pc-body .b { align-self:flex-start; background:#fff; border:1px solid #dcebed; color:#1e293b; border-bottom-left-radius:4px; }
 .pc-body .u { align-self:flex-end; background:#0B6574; color:#fff; border-bottom-right-radius:4px; }
+.pf-title { display:flex; align-items:center; gap:16px; }
+.pf-logo { width:56px; height:56px; flex:none; filter:drop-shadow(0 10px 18px rgba(0,0,0,.45)); transition:transform .4s cubic-bezier(.2,.7,.2,1); }
+.proj-feature:hover .pf-logo { transform:translateY(-3px) rotate(-6deg) scale(1.06); }
 /* ============================================================
    EDUCATION
    ============================================================ */
@@ -845,6 +848,7 @@ footer span { color:var(--accent); }
   .toggle-label { display:none; }
   .proj-feature { grid-template-columns:1fr; padding:28px 22px; gap:36px; }
   .pf-points { grid-template-columns:1fr; }
+  .pf-logo { width:44px; height:44px; }
   .pf-phones { min-height:330px; } .pf-phone { width:110px; } .pf-phone.p2 { width:140px; }
   .pf-f1 { left:-6px; } .pf-f2 { right:-4px; }
   .pf-rev .pf-f1 { right:-4px; left:auto; bottom:-14px; }
@@ -1180,7 +1184,7 @@ footer span { color:var(--accent); }
           <span class="pf-badge live">LIVE PRODUCT</span>
           <span class="pf-badge">FEATURED · 001</span>
         </div>
-        <h3 class="pf-name">HRM Craft</h3>
+        <div class="pf-title"><img class="pf-logo" src="hrm/logo.svg" alt="" width="56" height="56" loading="lazy"><h3 class="pf-name">HRM Craft</h3></div>
         <div class="pf-sub">Self-hosted HR &amp; Attendance Platform</div>
         <p class="pf-desc">A complete HR system for offices and factories: punches stream in from biometric terminals, leave balances explain themselves, rosters, approvals and reports in one place, bilingual in Bangla &amp; English, on the client's own server.</p>
         <ul class="pf-points">
@@ -1213,7 +1217,7 @@ footer span { color:var(--accent); }
           <span class="pf-badge live">LIVE PRODUCT</span>
           <span class="pf-badge">FEATURED · 002</span>
         </div>
-        <h3 class="pf-name">StoreCraft</h3>
+        <div class="pf-title"><img class="pf-logo" src="storecraft/logo.svg" alt="" width="56" height="56" loading="lazy"><h3 class="pf-name">StoreCraft</h3></div>
         <div class="pf-sub">E-commerce Platform for Electronics Retail</div>
         <p class="pf-desc">A complete online shop for electronics retailers: a fast, mobile-first storefront with Android and iOS apps, cash on delivery, bKash, Nagad and card payments, and a full admin portal to run orders, stock, coupons, reviews and sales reports.</p>
         <ul class="pf-points">
@@ -1245,7 +1249,7 @@ footer span { color:var(--accent); }
           <span class="pf-badge live">SDK · v1.19</span>
           <span class="pf-badge">FEATURED · 003</span>
         </div>
-        <h3 class="pf-name">Face Defender</h3>
+        <div class="pf-title"><img class="pf-logo" src="face-defender/logo.svg" alt="" width="56" height="56" loading="lazy"><h3 class="pf-name">Face Defender</h3></div>
         <div class="pf-sub">Face Liveness &amp; Anti-Spoofing SDK</div>
         <p class="pf-desc">A white-label Flutter SDK for banking, fintech and eKYC apps that confirms a real, live person is in front of the camera, and stops printed photos, screen replays and recorded videos, fully on-device with no per-check fees.</p>
         <ul class="pf-points">
@@ -1276,7 +1280,7 @@ footer span { color:var(--accent); }
           <span class="pf-badge live">LIVE PRODUCT</span>
           <span class="pf-badge">FEATURED · 004</span>
         </div>
-        <h3 class="pf-name">CraftBot</h3>
+        <div class="pf-title"><img class="pf-logo" src="craftbot/logo.svg" alt="" width="56" height="56" loading="lazy"><h3 class="pf-name">CraftBot</h3></div>
         <div class="pf-sub">AI Website Assistant</div>
         <p class="pf-desc">An AI chat assistant that learns every page of a business website and answers visitors around the clock, in their own language. It re-syncs on its own when the site changes, and falls back across AI providers so it never goes down.</p>
         <ul class="pf-points">
@@ -1287,7 +1291,7 @@ footer span { color:var(--accent); }
         </ul>
         <div class="proj-techs">
           <span class="tech-pill">Node.js</span><span class="tech-pill">React</span>
-          <span class="tech-pill">LLMs · RAG</span><span class="tech-pill">AnythingLLM</span>
+          <span class="tech-pill">LLMs · RAG</span><span class="tech-pill">Vector Search</span>
         </div>
         <span class="pf-cta">Explore the product <span class="pf-arrow">↗</span></span>
       </div>

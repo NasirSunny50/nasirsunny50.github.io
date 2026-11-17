@@ -1,6 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <!-- StoreCraft mark -->
-  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22c55e"/><stop offset="1" stop-color="#15803d"/></linearGradient></defs>
-  <rect width="512" height="512" rx="120" fill="url(#g)"/>
-  <g fill="#fff"><path transform="translate(157.78 364.98) scale(0.14648 -0.14648)" d="M681 -22C1043 -22 1256 153 1256 424C1256 674 1062 802 811 860L676 893C550 923 438 970 438 1081C438 1181 526 1253 682 1253C835 1253 930 1184 941 1065H1236C1231 1327 1015 1510 685 1510C361 1510 125 1330 125 1061C125 844 276 717 528 656L692 615C854 575 949 528 949 426C949 313 841 236 678 236C513 236 392 311 382 462H85C94 145 323 -22 681 -22Z"/></g>
+<!-- StoreCraft mark: shopping bag with S -->
+<defs>
+  <linearGradient id="scg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22c55e"/><stop offset="1" stop-color="#15803d"/></linearGradient>
+  <linearGradient id="scs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16a34a"/><stop offset="1" stop-color="#14532d"/></linearGradient>
+</defs>
+<rect width="512" height="512" rx="116" fill="url(#scg)"/>
+<path d="M190 196 V170 a66 66 0 0 1 132 0 V196" fill="none" stroke="#fff" stroke-width="30" stroke-linecap="round"/>
+<path d="M132 214 Q132 196 150 196 H362 Q380 196 380 214 L366 398 Q364 424 338 424 H174 Q148 424 146 398 Z" fill="#fff"/>
+<circle cx="190" cy="232" r="11" fill="#15803d" opacity=".35"/><circle cx="322" cy="232" r="11" fill="#15803d" opacity=".35"/>
+<g fill="url(#scs)"><path transform="translate(193.29 387.12) scale(0.09277 -0.09277)" d="M691 -20C1060 -20 1280 149 1280 432C1280 670 1113 814 825 877L696 907C563 937 476 981 476 1073C476 1156 549 1217 690 1217C832 1217 911 1154 921 1046H1260C1256 1322 1036 1510 691 1510C353 1510 111 1325 111 1049C111 825 267 696 524 637L682 600C845 563 923 518 923 433C923 338 833 273 687 273C526 273 419 347 411 492H72C78 148 318 -20 691 -20Z"/></g>
+<circle cx="398" cy="118" r="20" fill="#facc15"/>
 </svg>

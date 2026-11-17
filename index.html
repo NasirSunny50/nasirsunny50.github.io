@@ -641,6 +641,11 @@ section { position:relative; z-index:1; }
 .pf-f2 { right:-12px; top:-14px; animation-delay:-2.5s; }
 @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
 
+.pf-rev .pf-visual { order:-1; }
+.pf-rev .pf-frame { transform:rotateY(10deg) rotateX(4deg); }
+.pf-rev:hover .pf-frame { transform:rotateY(0) rotateX(0) scale(1.02); }
+.pf-rev .pf-f1 { left:auto; right:-18px; bottom:-18px; }
+.proj-feature + .proj-feature { margin-top:32px; }
 /* ============================================================
    EDUCATION
    ============================================================ */
@@ -791,6 +796,8 @@ footer span { color:var(--accent); }
   .proj-feature { grid-template-columns:1fr; padding:28px 22px; gap:36px; }
   .pf-points { grid-template-columns:1fr; }
   .pf-f1 { left:-6px; } .pf-f2 { right:-4px; }
+  .pf-rev .pf-f1 { right:-4px; left:auto; bottom:-14px; }
+  .pf-rev .pf-visual { order:0; }
   .scroll-hint { display:none; }
   nav { padding:20px 28px; }
   .nav-links { display:none; }
@@ -1161,31 +1168,35 @@ footer span { color:var(--accent); }
       </div>
     </a>
 
-    <div class="proj-grid">
-      <div class="proj-card reveal">
-        <div class="proj-top"><div class="proj-icon">🧠</div><div class="proj-num">// 002</div></div>
-        <div class="proj-name">Mask Detection &amp; Distance Monitor</div>
-        <p class="proj-desc">AI-powered real-time system for social distancing and face mask detection during COVID-19. Uses deep neural networks and computer vision.</p>
-        <div class="proj-techs">
-          <span class="tech-pill">Python</span><span class="tech-pill">TensorFlow</span>
-          <span class="tech-pill">Keras</span><span class="tech-pill">MobileNetV2</span><span class="tech-pill">OpenCV</span>
+    <!-- FEATURED: STORECRAFT -->
+    <div class="proj-feature pf-rev reveal">
+      <div class="pf-text">
+        <div class="pf-badges">
+          <span class="pf-badge live">LIVE PRODUCT</span>
+          <span class="pf-badge">FEATURED · 002</span>
         </div>
+        <h3 class="pf-name">StoreCraft</h3>
+        <div class="pf-sub">E-commerce Platform for Electronics Retail</div>
+        <p class="pf-desc">A complete online shop for electronics retailers: a fast, mobile-first storefront with Android and iOS apps, cash on delivery, bKash, Nagad and card payments, and a full admin portal to run orders, stock, coupons, reviews and sales reports.</p>
+        <ul class="pf-points">
+          <li>Storefront, Android &amp; iOS apps</li>
+          <li>COD, bKash, Nagad &amp; cards</li>
+          <li>Live admin dashboard &amp; reports</li>
+          <li>One-click branded invoices</li>
+        </ul>
+        <div class="proj-techs">
+          <span class="tech-pill">Next.js 15</span><span class="tech-pill">TypeScript</span>
+          <span class="tech-pill">PostgreSQL · Prisma</span><span class="tech-pill">Playwright</span>
+        </div>
+        <a href="#contact" class="pf-cta">Request a demo <span class="pf-arrow">→</span></a>
       </div>
-      <div class="proj-card reveal">
-        <div class="proj-top"><div class="proj-icon">🏠</div><div class="proj-num">// 003</div></div>
-        <div class="proj-name">BashaBari — Smart Housing Platform</div>
-        <p class="proj-desc">Android application bridging homeowners and tenants. Enables seamless communication and manages all essential housing-related operations.</p>
-        <div class="proj-techs">
-          <span class="tech-pill">Android</span><span class="tech-pill">Java</span><span class="tech-pill">Firebase</span>
+      <div class="pf-visual">
+        <div class="pf-glow"></div>
+        <div class="pf-frame">
+          <div class="pf-bar"><i></i><i></i><i></i><span>storecraft / storefront</span></div>
+          <img src="projects/storecraft.jpg" alt="StoreCraft storefront on laptop and phone, with the admin portal" width="1440" height="810" loading="lazy">
         </div>
-      </div>
-      <div class="proj-card reveal">
-        <div class="proj-top"><div class="proj-icon">🛒</div><div class="proj-num">// 004</div></div>
-        <div class="proj-name">Gadget Blast — E-Commerce Platform</div>
-        <p class="proj-desc">Full-featured e-commerce website for an electronics retail shop with product listings, cart management, and complete shopping experience.</p>
-        <div class="proj-techs">
-          <span class="tech-pill">HTML</span><span class="tech-pill">CSS</span><span class="tech-pill">JavaScript</span>
-        </div>
+        <div class="pf-float pf-f1"><b>3</b><span>web · android · ios</span></div>
       </div>
     </div>
   </div>

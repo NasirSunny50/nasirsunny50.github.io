@@ -697,6 +697,15 @@ section { position:relative; z-index:1; }
 .pf-title { display:flex; align-items:center; gap:16px; }
 .pf-logo { width:56px; height:56px; flex:none; filter:drop-shadow(0 10px 18px rgba(0,0,0,.45)); transition:transform .4s cubic-bezier(.2,.7,.2,1); }
 .proj-feature:hover .pf-logo { transform:translateY(-3px) rotate(-6deg) scale(1.06); }
+.pf-cams { display:grid; grid-template-columns:1fr 1fr; gap:8px; padding:10px; border-radius:14px; background:#0e1412; border:1px solid #26322e;
+  box-shadow:0 40px 70px -28px rgba(0,0,0,.85); transform:rotateY(-12deg) rotateX(5deg); transition:transform .6s cubic-bezier(.2,.7,.2,1); }
+.proj-feature:hover .pf-cams { transform:rotateY(0) rotateX(0) scale(1.03); }
+.pcam { position:relative; aspect-ratio:16/10; border-radius:8px; background:linear-gradient(160deg,#2a3631,#121a17); overflow:hidden; }
+.pcam::after { content:''; position:absolute; left:42%; bottom:10%; width:16%; height:58%; border-radius:40% 40% 6px 6px; background:rgba(210,222,217,.35); }
+.pcam:nth-child(4)::after { display:none; }
+.pcam i { position:absolute; left:6px; top:5px; font:700 9px 'DM Sans',sans-serif; font-style:normal; color:#cbd5e1; background:rgba(0,0,0,.45); padding:1px 6px; border-radius:4px; }
+.pb { position:absolute; left:36%; top:22%; font:700 9px 'DM Sans',sans-serif; padding:1px 6px; border-radius:4px; z-index:1; }
+.pb.ok { background:#4fd09f; color:#06221b; } .pb.unk { background:#f2786c; color:#2a0b07; } .pb.may { background:#f2a65a; color:#2a1704; }
 /* ============================================================
    EDUCATION
    ============================================================ */
@@ -1309,6 +1318,40 @@ footer span { color:var(--accent); }
           </div>
         </div>
         <div class="pf-float pf-f1"><b>24/7</b><span>answers</span></div>
+      </div>
+    </a>
+
+    <!-- FEATURED: CAMERIQO -->
+    <a href="cameriqo/" target="_blank" rel="noopener" class="proj-feature reveal" aria-label="Open Cameriqo product page in a new tab">
+      <div class="pf-text">
+        <div class="pf-badges">
+          <span class="pf-badge live">LIVE PRODUCT</span>
+          <span class="pf-badge">FEATURED · 005</span>
+        </div>
+        <div class="pf-title"><img class="pf-logo" src="cameriqo/logo.svg" alt="" width="56" height="56" loading="lazy"><h3 class="pf-name">Cameriqo</h3></div>
+        <div class="pf-sub">Face Recognition for Existing CCTV</div>
+        <p class="pf-desc">Connects to a building's existing DVR/NVR, names residents on the live cameras, flags unfamiliar people and keeps a searchable timeline of who was where, when. It learns from admin corrections, and faces never leave the premises.</p>
+        <ul class="pf-points">
+          <li>Live recognition on 4 cameras</li>
+          <li>Unfamiliar-person IDs &amp; Telegram alerts</li>
+          <li>Self-learning from corrections</li>
+          <li>Timeline &amp; footage search</li>
+        </ul>
+        <div class="proj-techs">
+          <span class="tech-pill">Python · FastAPI</span><span class="tech-pill">SCRFD · ArcFace</span>
+          <span class="tech-pill">ONNX Runtime</span><span class="tech-pill">RTSP · SQLite</span>
+        </div>
+        <span class="pf-cta">Explore the product <span class="pf-arrow">↗</span></span>
+      </div>
+      <div class="pf-visual">
+        <div class="pf-glow"></div>
+        <div class="pf-cams">
+          <div class="pcam"><i>Main gate</i><span class="pb ok">Rahim · 4B</span></div>
+          <div class="pcam"><i>Lift lobby</i><span class="pb unk">UNK-0007</span></div>
+          <div class="pcam"><i>Parking</i><span class="pb may">Not sure</span></div>
+          <div class="pcam"><i>Stairs</i></div>
+        </div>
+        <div class="pf-float pf-f2"><b>LIVE</b><span>4 cameras</span></div>
       </div>
     </a>
   </div>

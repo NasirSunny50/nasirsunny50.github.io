@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cameriqo — Know who came, where and when</title>
+<meta name="description" content="Cameriqo adds face recognition to the CCTV you already have. It names your residents on live cameras, flags unfamiliar people, and keeps a timeline of who was where, when. Faces never leave your premises.">
+<meta property="og:title" content="Cameriqo — Know who came, where and when">
+<meta property="og:description" content="Face recognition for your existing CCTV. Residents named, strangers flagged, faces kept on-site.">
+<meta name="theme-color" content="#0e6e5d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/product.css">
+<style>
+:root{--brand:#0e6e5d;--brand-2:#14907a;--brand-ink:#0a4d41;--brand-soft:#e3f1ed}
+.hero{background:linear-gradient(180deg,#e4f2ee 0%,#fff 64%)}
+.wm{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 23px/1 "Sora",sans-serif;letter-spacing:-.02em;color:var(--ink)}
+.wm img{width:34px;height:34px}
+footer .wm{color:#fff}
+.dark .ftag,.dark .stat strong em{color:#5fd3b8}
+
+/* live-view illustration */
+.app{background:#0e1412;color:#e6edea;text-align:left;font-size:12px}
+.app-top{display:flex;align-items:center;gap:14px;padding:10px 16px;border-bottom:1px solid #26322e;background:#151d1a}
+.app-top .wm{font-size:15px;color:#e6edea}.app-top .wm img{width:22px;height:22px}
+.app-nav{display:flex;gap:4px;margin-left:8px}
+.app-nav span{padding:5px 10px;border-radius:7px;color:#9aa9a4;font-weight:600}
+.app-nav span.on{background:#173a32;color:#5fd3b8}
+.app-nav span.on::before{content:"";display:inline-block;width:6px;height:6px;margin-right:6px;border-radius:50%;background:#f2786c;vertical-align:1px;animation:pls 1.4s infinite}
+@keyframes pls{50%{opacity:.3}}
+.app-body{display:grid;grid-template-columns:1fr 250px;gap:12px;padding:12px}
+.cams{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cam{position:relative;aspect-ratio:16/10;border-radius:9px;overflow:hidden;background:linear-gradient(160deg,#2a3631,#121a17)}
+.cam.c2{background:linear-gradient(160deg,#25302d,#0f1513)}.cam.c3{background:linear-gradient(200deg,#2c3833,#141c19)}.cam.c4{background:linear-gradient(140deg,#222c29,#101614)}
+.cam .floor{position:absolute;left:0;right:0;bottom:0;height:38%;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.08))}
+.cam .door{position:absolute;bottom:38%;width:22%;height:46%;border:2px solid rgba(255,255,255,.08);border-bottom:0;border-radius:3px 3px 0 0}
+.cam .lbl{position:absolute;left:8px;top:7px;font-size:10px;font-weight:700;color:#cbd5e1;background:rgba(0,0,0,.45);padding:2px 7px;border-radius:5px}
+.cam .rec{position:absolute;right:8px;top:8px;font-size:9px;font-weight:700;color:#f2786c}
+.person{position:absolute;bottom:12%;width:17%}
+.person svg{width:100%;display:block;fill:rgba(210,222,217,.55)}
+.fbox{position:absolute;border:2px solid #4fd09f;border-radius:5px}
+.fbox b{position:absolute;left:-2px;top:-19px;white-space:nowrap;font-size:9.5px;padding:1px 6px;border-radius:4px 4px 4px 0;background:#4fd09f;color:#06221b}
+.fbox.unk{border-color:#f2786c}.fbox.unk b{background:#f2786c;color:#2a0b07}
+.fbox.may{border-color:#f2a65a}.fbox.may b{background:#f2a65a;color:#2a1704}
+.seen{background:#151d1a;border:1px solid #26322e;border-radius:10px;padding:10px}
+.seen h5{font:700 12px/1 "Sora";margin:2px 4px 10px;color:#e6edea}
+.ev{display:flex;align-items:center;gap:9px;padding:7px 6px;border-radius:8px}
+.ev+.ev{border-top:1px solid #26322e}
+.ev .av{flex:none;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-weight:800;font-size:11px;background:#143429;color:#4fd09f}
+.ev.unk .av{background:#3d1d1a;color:#f2786c}.ev.may .av{background:#3a2a17;color:#f2a65a}
+.ev b{display:block;font-size:11.5px;color:#e6edea}.ev small{color:#9aa9a4;font-size:10.5px}
+.demo-note{margin-top:46px;font-size:13px;color:var(--muted)}
+.chip.c1{top:58%}
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.bento .card h3{font-size:18px}.bento .card p{font-size:15px}
+.fix{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
+.fix span{padding:14px;border-radius:12px;background:#fff;border:1px solid var(--line);box-shadow:var(--sh-1);font-weight:600;color:var(--ink);font-size:14.5px;text-align:center}
+@media(max-width:960px){
+  .app-body{grid-template-columns:1fr}.app-nav span:not(.on){display:none}
+  .bento{grid-template-columns:1fr 1fr}.fix{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){.bento{grid-template-columns:1fr}.seen .ev:nth-child(n+4){display:none}}
+</style>
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+</head>
+<body>
+<header><div class="wrap">
+  <a class="wm" href="./"><img src="logo.svg" alt="" width="34" height="34"><span>Cameriqo</span></a>
+  <nav aria-label="Main">
+    <a href="#how">How it works</a>
+    <a href="#features">Features</a>
+    <a href="#privacy">Privacy</a>
+    <a href="#faq">FAQ</a>
+    <a class="btn" href="#contact">Book a demo</a>
+  </nav>
+</div></header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><i></i>Face recognition for your existing CCTV</span>
+    <h1>Know who came, <span class="hl">where and when.</span></h1>
+    <p class="lead">Cameriqo connects to the DVR or NVR you already have, names your residents on the live cameras and flags anyone unfamiliar. Every visit lands on a timeline you can search, and faces never leave your building.</p>
+    <div class="cta">
+      <a class="btn" href="#contact">Book a free demo</a>
+      <a class="btn alt" href="#how">See how it works</a>
+    </div>
+    <small>For homes, apartment buildings and small businesses with Hikvision-style CCTV.</small>
+
+    <div class="stage">
+      <div class="stage-inner">
+        <div class="screen app">
+          <div class="bar"><i></i><i></i><i></i><span>cameriqo.local/#live</span></div>
+          <div class="app-top"><span class="wm"><img src="logo.svg" alt="">Cameriqo</span><div class="app-nav"><span class="on">Live</span><span>Timeline</span><span>Search</span><span>People</span><span>Enrollment</span><span>Settings</span></div></div>
+          <div class="app-body">
+            <div class="cams">
+              <div class="cam"><span class="floor"></span><span class="door" style="left:62%"></span><span class="lbl">Main gate</span><span class="rec">● LIVE</span>
+                <span class="person" style="left:30%"><svg viewBox="0 0 40 90"><circle cx="20" cy="13" r="10"/><path d="M4 90V44c0-11 7-19 16-19s16 8 16 19v46z"/></svg></span>
+                <span class="fbox" style="left:31%;top:30%;width:15%;height:22%"><b>Rahim · 4B</b></span></div>
+              <div class="cam c2"><span class="floor"></span><span class="door" style="left:12%"></span><span class="lbl">Lift lobby</span><span class="rec">● LIVE</span>
+                <span class="person" style="left:58%"><svg viewBox="0 0 40 90"><circle cx="20" cy="13" r="10"/><path d="M4 90V44c0-11 7-19 16-19s16 8 16 19v46z"/></svg></span>
+                <span class="fbox unk" style="left:59%;top:30%;width:15%;height:22%"><b>UNK-0007</b></span></div>
+              <div class="cam c3"><span class="floor"></span><span class="lbl">Parking</span><span class="rec">● LIVE</span>
+                <span class="person" style="left:44%"><svg viewBox="0 0 40 90"><circle cx="20" cy="13" r="10"/><path d="M4 90V44c0-11 7-19 16-19s16 8 16 19v46z"/></svg></span>
+                <span class="fbox may" style="left:45%;top:30%;width:15%;height:22%"><b>Not sure</b></span></div>
+              <div class="cam c4"><span class="floor"></span><span class="door" style="left:40%"></span><span class="lbl">Stairs</span><span class="rec">● LIVE</span></div>
+            </div>
+            <div class="seen">
+              <h5>Just seen</h5>
+              <div class="ev"><span class="av">RU</span><span><b>Rahim Uddin · Flat 4B</b><small>Main gate · 09:41</small></span></div>
+              <div class="ev unk"><span class="av">?</span><span><b>UNK-0007 · Unfamiliar</b><small>Lift lobby · 09:38</small></span></div>
+              <div class="ev may"><span class="av">?</span><span><b>Not sure · needs review</b><small>Parking · 09:35</small></span></div>
+              <div class="ev"><span class="av">NA</span><span><b>Nusrat Akter · Flat 2A</b><small>Stairs · 09:22</small></span></div>
+              <div class="ev"><span class="av">KH</span><span><b>Karim Hossain · Guard</b><small>Main gate · 09:02</small></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="chip c1"><span class="ci">✓</span><span><b>Resident recognised</b><small>Rahim · Flat 4B · Main gate</small></span></div>
+        <div class="chip c2"><span class="ci">🔔</span><span><b>Telegram alert sent</b><small>Unfamiliar person · with photo</small></span></div>
+        <div class="chip c3"><span class="ci">🏠</span><span><b>Faces stay on-site</b><small>Nothing sent to the cloud</small></span></div>
+      </div>
+    </div>
+    <p class="demo-note">Illustration of the live view. Names and figures are examples.</p>
+  </div>
+</section>
+
+<div class="trust"><div class="wrap">
+  <span class="t"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Works with Hikvision DVR/NVR</span>
+  <span class="t"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Runs on any GPU, or CPU</span>
+  <span class="t"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Opens in any browser</span>
+  <span class="t"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Bangla and English</span>
+</div></div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="ftag">The problem</span>
+      <h2>Your cameras record everything. Nobody can find anything.</h2>
+    </div>
+    <div class="cards3">
+      <div class="card warn" data-tilt="8"><div class="ico3d lift">📼</div><h3 class="lift">Hours of footage, no answers</h3><p>"Who came in last night?" means scrubbing through recordings, camera by camera.</p></div>
+      <div class="card warn" data-tilt="8"><div class="ico3d lift">❓</div><h3 class="lift">Strangers blend in</h3><p>In a busy building, nobody can tell a visitor from a resident on a small CCTV screen.</p></div>
+      <div class="card warn" data-tilt="8"><div class="ico3d lift">🧍</div><h3 class="lift">Guards can't know every face</h3><p>Shifts change, residents move in and out, and memory is the only record.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="alt-bg">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="ftag">How it works</span>
+      <h2>Your cameras, made smarter.</h2>
+    </div>
+    <ol class="steps">
+      <li><h3>Connect your recorder</h3><p>Cameriqo reads the camera streams from your existing DVR or NVR. No new cameras.</p></li>
+      <li><h3>Enrol your people</h3><p>Name, flat, mobile and a face photo: drag it in, pick a file or paste it.</p></li>
+      <li><h3>Watch it recognise</h3><p>Names appear over faces on the live view; unfamiliar people get a red ID.</p></li>
+      <li><h3>Correct it, and it learns</h3><p>Confirm or fix a match in one tap. Every correction makes the next one better.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="ftag">Features</span>
+      <h2>Everything you need to answer "who was that?"</h2>
+    </div>
+    <div class="bento">
+      <div class="card" data-tilt="7"><div class="ico3d lift">📺</div><h3 class="lift">Live view</h3><p>Four cameras at once, with each resident's name and flat over their face and a red ID for anyone unfamiliar.</p></div>
+      <div class="card" data-tilt="7"><div class="ico3d lift">👀</div><h3 class="lift">Just seen</h3><p>Each person once, with their clearest face shot, date, time and camera. Filter by camera or by type.</p></div>
+      <div class="card" data-tilt="7"><div class="ico3d lift">🗓️</div><h3 class="lift">Timeline and search</h3><p>Who was where, when. Search footage by date, time and person, or find everyone seen on two or more cameras.</p></div>
+      <div class="card" data-tilt="7"><div class="ico3d lift">🧠</div><h3 class="lift">Learns from you</h3><p>Uncertain matches go to review instead of guessing. Your corrections teach it your residents' faces.</p></div>
+      <div class="card" data-tilt="7"><div class="ico3d lift">🔔</div><h3 class="lift">Telegram alerts</h3><p>Set rules by camera, person and time, like an unfamiliar person at the gate after 11 pm, and get a photo instantly.</p></div>
+      <div class="card" data-tilt="7"><div class="ico3d lift">🌗</div><h3 class="lift">Made for everyone</h3><p>Bangla or English, light or dark, on a phone, tablet or the TV in the guard room.</p></div>
+    </div>
+
+    <div class="sec-head" style="margin:96px auto 28px">
+      <span class="ftag">Self-learning</span>
+      <h3 style="font-size:clamp(22px,2.6vw,30px)">Four simple corrections teach it your building.</h3>
+    </div>
+    <div class="fix"><span>"Yes, this is Rahim"</span><span>"This isn't Rahim"</span><span>"This is actually Karim"</span><span>"New resident"</span></div>
+  </div>
+</section>
+
+<section id="privacy" class="dark">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="ftag">Privacy by design</span>
+      <h2>Faces never leave your building.</h2>
+      <p class="lead">Recognition runs on a small computer next to your recorder. Nothing goes to anyone's cloud.</p>
+    </div>
+    <div class="cards3 four">
+      <div class="card" data-tilt="8"><div class="ico3d lift">🏠</div><h3 class="lift">Processed on-site</h3><p>Video, faces and the database stay on your premises.</p></div>
+      <div class="card" data-tilt="8"><div class="ico3d lift">🔐</div><h3 class="lift">Secured logins</h3><p>Passwords are hashed and the recorder password is encrypted on the machine.</p></div>
+      <div class="card" data-tilt="8"><div class="ico3d lift">🧹</div><h3 class="lift">Automatic clean-up</h3><p>You choose how long images are kept; older ones are deleted on their own.</p></div>
+      <div class="card" data-tilt="8"><div class="ico3d lift">🗑️</div><h3 class="lift">Delete on request</h3><p>Remove a person and every image of them in one step.</p></div>
+    </div>
+    <div class="stats">
+      <div class="stat" data-tilt="10"><strong>4</strong><span>live cameras at once</span></div>
+      <div class="stat" data-tilt="10"><strong>0</strong><span>face images sent to the cloud</span></div>
+      <div class="stat" data-tilt="10"><strong>24<em>/7</em></strong><span>recognition and alerts</span></div>
+      <div class="stat" data-tilt="10"><strong>BN<em>+</em>EN</strong><span>Bangla and English</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap faq">
+    <div class="sec-head">
+      <span class="ftag">FAQ</span>
+      <h2>Common questions</h2>
+    </div>
+    <details><summary>Do I need new cameras?</summary><p>No. Cameriqo reads the streams from your existing Hikvision-style DVR or NVR. For the best results, one camera near the entrance at face height, in full 1080p, with a white light at night.</p></details>
+    <details><summary>What computer does it need?</summary><p>A small Windows PC next to your recorder. Any DirectX 12 graphics card speeds it up (AMD, Intel or NVIDIA); without one it runs on the processor.</p></details>
+    <details><summary>Can I check it from my phone?</summary><p>Yes. It opens in any browser, and secure remote access lets you check it from outside, behind a login with lockout after repeated wrong tries.</p></details>
+    <details><summary>How accurate is it?</summary><p>It depends most on the camera: face height, resolution and night lighting matter more than any setting. When it isn't sure, it says "not sure" and asks you to review, rather than guessing a name. Your corrections improve it over time.</p></details>
+    <details><summary>What about residents' consent?</summary><p>Only the people you enrol are named. Faces stay on your premises, images are deleted on the schedule you set, and a person can be removed with all their images at any time.</p></details>
+  </div>
+</section>
+
+<section id="contact" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="contact">
+      <div>
+        <h2>See it on your own cameras.</h2>
+        <p class="lead">A free demo with your building's DVR or NVR. Tell us how many cameras you have and where they point.</p>
+        <a class="wa" href="https://wa.me/8801799438398" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04.63C5.76.63.65 5.74.65 12.02c0 2.01.52 3.97 1.52 5.7L.55 23.63l6.04-1.58a11.36 11.36 0 0 0 5.44 1.39c6.28 0 11.39-5.11 11.39-11.39S18.32.63 12.04.63zm5.43 13.75c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49 2.47 1.07 2.97.86 3.56.8.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>WhatsApp: +880 1799-438398</a>
+      </div>
+      <form id="demo" data-product="Cameriqo" data-wa="8801799438398">
+        <input name="name" aria-label="Name" required placeholder="Name">
+        <input name="place" aria-label="Home, building or business" required placeholder="Home, building or business">
+        <input name="phone" aria-label="Phone" required placeholder="Phone">
+        <select name="cams" aria-label="Number of cameras"><option>Up to 4 cameras</option><option>5–16 cameras</option><option>More than 16 cameras</option></select>
+        <textarea name="msg" rows="3" aria-label="Message" placeholder="Which DVR/NVR do you have?"></textarea>
+        <button class="btn" type="submit">Book the demo</button>
+        <p class="status" role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <div class="f-top">
+    <div class="f-brand">
+      <span class="wm"><img src="logo.svg" alt="" width="34" height="34"><span>Cameriqo</span></span>
+      <p>Face recognition for the CCTV you already have. Know who came, where and when.</p>
+      <a class="btn" href="#contact">Book a demo →</a>
+    </div>
+    <nav class="f-col" aria-label="Product"><h4>Product</h4><a href="#how">How it works</a><a href="#features">Features</a><a href="#privacy">Privacy</a><a href="#faq">FAQ</a></nav>
+    <nav class="f-col" aria-label="Contact"><h4>Contact</h4><a class="wa-l" href="https://wa.me/8801799438398" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04.63C5.76.63.65 5.74.65 12.02c0 2.01.52 3.97 1.52 5.7L.55 23.63l6.04-1.58a11.36 11.36 0 0 0 5.44 1.39c6.28 0 11.39-5.11 11.39-11.39S18.32.63 12.04.63zm5.43 13.75c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49 2.47 1.07 2.97.86 3.56.8.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>WhatsApp</a><a href="#contact">Live demo</a></nav>
+    <nav class="f-col" aria-label="More products"><h4>More products</h4><a href="../hrm/">HRM Craft</a><a href="../storecraft/">StoreCraft</a><a href="../face-defender/">Face Defender</a><a href="../craftbot/">CraftBot</a></nav>
+  </div>
+  <div class="f-bottom"><span>© 2026 Cameriqo · <a href="https://www.intellicrafttechnologies.com/" target="_blank" rel="noopener">IntelliCraft Technologies</a></span><a href="../" target="_blank" rel="noopener">Built by Md. Nasir Uddin ↗</a></div>
+</div></footer>
+<script src="../shared/product.js"></script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Face Defender — On-device face liveness &amp; anti-spoofing SDK</title>
+<meta name="description" content="Face Defender is a Flutter SDK for Android and iOS that confirms a real, live person is in front of the camera and stops printed photos, screen replays and recorded videos, entirely on the phone.">
+<meta property="og:title" content="Face Defender — Verify it's really them">
+<meta property="og:description" content="On-device face liveness and anti-spoofing SDK for banking, fintech and eKYC apps.">
+<meta property="og:image" content="shots/01_hero.jpg">
+<meta name="theme-color" content="#2F6BFF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/product.css">
+<style>
+:root{--brand:#2F6BFF;--brand-2:#5b8cff;--brand-ink:#1d3fa8;--brand-soft:#eef3ff}
+.hero{background:linear-gradient(180deg,#eaf0ff 0%,#fff 64%)}
+.threats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.threat{display:flex;align-items:center;gap:14px;padding:18px 20px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--sh-1);font-weight:600;color:var(--ink)}
+.threat .x{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#fff1f2;color:#e11d48;font-weight:800;box-shadow:0 3px 0 #fecdd3}
+.threat.ok .x{background:#ecfdf3;color:#16a34a;box-shadow:0 3px 0 #bbf7d0}
+.threat small{display:block;font-weight:500;color:var(--muted);font-size:13px}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.cols2 .card h3{font-size:22px;margin-bottom:6px}
+.cols2 ul{list-style:none;padding:0;margin-top:18px;display:grid;gap:14px}
+.cols2 li{display:flex;gap:12px}
+.cols2 li::before{content:"";flex:none;width:22px;height:22px;margin-top:2px;border-radius:7px;background:var(--brand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12.5 4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/14px no-repeat;box-shadow:0 2px 0 var(--brand-ink)}
+.cols2 li b{color:var(--ink)}
+.cols2 li span{color:var(--muted)}
+.dev{display:grid;grid-template-columns:5fr 6fr;gap:56px;align-items:center}
+@media(max-width:960px){.threats{grid-template-columns:1fr 1fr}.cols2,.dev{grid-template-columns:1fr}}
+@media(max-width:520px){.threats{grid-template-columns:1fr}}
+</style>
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+</head>
+<body>
+<header><div class="wrap">
+  <a class="brand" href="./"><img src="logo-full.svg" alt="Face Defender" width="179" height="32"></a>
+  <nav aria-label="Main">
+    <a href="#how">How it works</a>
+    <a href="#features">Features</a>
+    <a href="#developers">Developers</a>
+    <a href="#faq">FAQ</a>
+    <a class="btn" href="#contact">Book a demo</a>
+  </nav>
+</div></header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><i></i>Face liveness &amp; anti-spoofing SDK</span>
+    <h1>Verify it's <span class="hl">really them.</span></h1>
+    <p class="lead">Face Defender confirms that a real, live person is in front of the camera, and stops printed photos, screen replays and recorded videos, entirely on the phone. Add it to your Android and iOS app in a few lines of Flutter code.</p>
+    <div class="cta">
+      <a class="btn" href="#contact">Book a free demo</a>
+      <a class="btn alt" href="#developers">See the integration</a>
+    </div>
+    <small>For banking, fintech, wallet and eKYC apps. No per-check fees, no face images leaving the device.</small>
+
+    <div class="stage phones">
+      <div class="stage-inner">
+        <div class="phone side l zoom"><img src="shots/verification_start.jpg" alt="Face Defender start screen: Verify it's really you, with tips and a Start button" width="590" height="1278"></div>
+        <div class="phone mid zoom"><img src="shots/home_screen.jpg" alt="Face Defender home screen with Start verification and Active / Passive mode" width="590" height="1278"></div>
+        <div class="phone side r zoom"><img src="shots/verified_result.jpg" alt="Result screen: Real person, liveness 94%" width="590" height="1278"></div>
+        <div class="chip c1"><span class="ci">✓</span><span><b>Real person · 94%</b><small>Verified in 6.8 s</small></span></div>
+        <div class="chip c2"><span class="ci">🛡️</span><span><b>Replay blocked</b><small>Fresh random challenge</small></span></div>
+        <div class="chip c3"><span class="ci">📱</span><span><b>100% on-device</b><small>Nothing uploaded</small></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-fade"></div>
+</section>
+
+<div class="trust"><div class="wrap">
+  <div class="tech">
+    <span><img src="tech/logo_flutter.svg" alt="">Flutter SDK</span>
+    <span><img src="tech/logo_google.svg" alt="">Google ML Kit</span>
+    <span><img src="tech/logo_onnx.svg" alt="">ONNX Runtime</span>
+    <span><img src="tech/logo_googleplay.svg" alt="">Play Integrity</span>
+    <span><img src="tech/logo_apple.svg" alt="">Apple DeviceCheck</span>
+    <span><img src="tech/logo_android.svg" alt="">Android &amp; iOS</span>
+  </div>
+</div></div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="ftag">Anti-spoofing</span>
+      <h2>Photos and replays don't pass.</h2>
+      <p class="lead">Random live challenges plus on-device presentation-attack detection catch the usual tricks.</p>
+    </div>
+    <div class="threats">
+      <div class="threat"><span class="x">✕</span><span>Printed photo<small>Blocked</small></span></div>
+      <div class="threat"><span class="x">✕</span><span>Photo on a screen<small>Blocked</small></span></div>
+      <div class="threat"><span class="x">✕</span><span>Replayed video<small>Blocked</small></span></div>
+      <div class="threat ok"><span class="x">✓</span><span>Real, live person<small>Verified</small></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="alt-bg">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="ftag">How it works</span>
+      <h2>Verified in seconds.</h2>
+      <p class="lead">About 5 seconds in passive mode, or about 20 seconds with four short prompts.</p>
+    </div>
+    <div class="trio">
+      <figure><div class="phone zoom"><img src="shots/home_screen.jpg" alt="Home screen: choose Active or Passive, optional NID eKYC" loading="lazy" width="590" height="1278"></div><figcaption><b>1 · Tap start</b>Pick Active or Passive mode, switch on NID eKYC if needed.</figcaption></figure>
+      <figure><div class="phone zoom"><img src="shots/verification_start.jpg" alt="Verification start with tips" loading="lazy" width="590" height="1278"></div><figcaption><b>2 · Quick live check</b>Short tips, then a camera check with live hints, one at a time.</figcaption></figure>
+      <figure><div class="phone zoom"><img src="shots/result_screen.jpg" alt="Result screen: Needs review, liveness 71%, reason shown" loading="lazy" width="590" height="1278"></div><figcaption><b>3 · Instant result</b>A clear verdict with confidence, time taken and a plain-language reason.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="ftag">Features</span>
+      <h2>Built for the people on both sides of the camera.</h2>
+    </div>
+    <div class="cols2">
+      <div class="card" data-tilt="5">
+        <div class="ico3d lift">🙂</div>
+        <h3 class="lift">For your customers</h3>
+        <ul>
+          <li><span><b>Fast, guided check.</b> About 5 seconds passive, or about 20 with 4 short prompts.</span></li>
+          <li><span><b>Live hints, one at a time.</b> "Move a little closer", "Too dark"; the face oval turns amber, then green.</span></li>
+          <li><span><b>Spoken prompts.</b> Turn, blink and smile instructions read aloud on-device, in English and Bangla.</span></li>
+          <li><span><b>Private by design.</b> Camera frames are processed in memory, never saved or uploaded by default.</span></li>
+          <li><span><b>NID eKYC add-on.</b> Scan both sides of the national ID; the portrait is matched to the live selfie.</span></li>
+          <li><span><b>Calm recovery.</b> Clear retry paths for no face, timeouts and a denied camera permission.</span></li>
+        </ul>
+      </div>
+      <div class="card" data-tilt="5">
+        <div class="ico3d lift">🏦</div>
+        <h3 class="lift">For the bank or app owner</h3>
+        <ul>
+          <li><span><b>Replay-resistant liveness.</b> Every session gets a fresh random challenge order.</span></li>
+          <li><span><b>On-device anti-spoofing.</b> Passive PAD model plus depth and screen-artifact cues, in hybrid, active or passive mode.</span></li>
+          <li><span><b>Device integrity checks.</b> Flags emulator, root/jailbreak, virtual camera, screen capture and debugger.</span></li>
+          <li><span><b>Structured results.</b> Verified, suspicious, failed, cancelled or error, with risk score, confidence and reason.</span></li>
+          <li><span><b>No per-check cost.</b> No paid APIs and no mandatory backend; the core check works offline.</span></li>
+          <li><span><b>Modular.</b> Swap the face detector, anti-spoof model, licence check or backend without breaking your app.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="wrap">
+    <div class="frow" style="margin-top:0">
+      <div class="ftext">
+        <span class="ftag">Privacy by design</span>
+        <h2 style="font-size:clamp(28px,3.4vw,42px)">Face images never leave the phone.</h2>
+        <p class="lead" style="margin-top:16px">Everything runs on the device, with no paid APIs and no mandatory backend. Only a structured, non-biometric result leaves the SDK.</p>
+        <ul class="checks"><li>100% on-device processing</li><li>Works offline</li><li>No per-check fees</li><li>Nothing stored by default</li></ul>
+      </div>
+      <div class="phone-wrap"><div class="phone zoom"><img src="shots/dark_theme.jpg" alt="Face Defender start screen in the dark theme" loading="lazy" width="590" height="1278"></div></div>
+    </div>
+    <div class="stats">
+      <div class="stat" data-tilt="10"><strong>~5<em>s</em></strong><span>passive check</span></div>
+      <div class="stat" data-tilt="10"><strong>0</strong><span>per-check fees</span></div>
+      <div class="stat" data-tilt="10"><strong>2</strong><span>platforms: Android and iOS</span></div>
+      <div class="stat" data-tilt="10"><strong>EN<em>+</em>BN</strong><span>built-in languages</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="ftag">White-label</span>
+      <h2>Your brand. Your language.</h2>
+      <p class="lead">Your colours, logo and button shape, with light and dark themes and full Bangla built in.</p>
+    </div>
+    <div class="trio">
+      <figure><div class="phone zoom"><img src="shots/whitelabel_bangla.jpg" alt="SDK start screen re-skinned in green, in Bangla" loading="lazy" width="590" height="1278"></div><figcaption><b>Your brand, in Bangla</b>Your colours, logo and button shape, plus full Bangla copy.</figcaption></figure>
+      <figure><div class="phone zoom"><img src="shots/dark_theme.jpg" alt="SDK start screen in the dark theme" loading="lazy" width="590" height="1278"></div><figcaption><b>Light and dark themes</b>Ready-made presets to match your app.</figcaption></figure>
+      <figure><div class="phone zoom"><img src="shots/verified_result.jpg" alt="Result screen: Real person verdict" loading="lazy" width="590" height="1278"></div><figcaption><b>Instant, clear verdict</b>Plain-language result for the user; data for you.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="developers" class="alt-bg">
+  <div class="wrap dev">
+    <div class="ftext">
+      <span class="ftag">For developers</span>
+      <h2 style="font-size:clamp(28px,3.4vw,42px)">Integrate in minutes.</h2>
+      <p class="lead" style="margin-top:16px">A small, clean public API. Initialise once, start a verification, and act on a typed result.</p>
+      <ul class="checks"><li>Flutter package for Android and iOS</li><li>Theme, wording and risk thresholds per customer</li><li>Optional backend adapter for server-side checks</li></ul>
+    </div>
+    <div class="code" data-tilt="4">
+      <div class="bar"><i></i><i></i><i></i><span>verify.dart</span></div>
+<pre><span class="k">await</span> FaceDefender.<span class="f">initialize</span>(
+  configuration: <span class="t">FaceDefenderConfig</span>(license: myLicense),
+);
+
+<span class="k">final</span> result = <span class="k">await</span> FaceDefender.<span class="f">startVerification</span>(context);
+
+<span class="k">switch</span> (result.status) {
+  <span class="k">case</span> <span class="t">VerificationStatus</span>.verified:   <span class="c">// proceed</span>
+  <span class="k">case</span> <span class="t">VerificationStatus</span>.failed:     <span class="c">// deny or retry</span>
+  <span class="k">case</span> <span class="t">VerificationStatus</span>.suspicious: <span class="c">// step-up review</span>
+  <span class="k">case</span> <span class="t">VerificationStatus</span>.cancelled:  <span class="c">// user aborted</span>
+  <span class="k">case</span> <span class="t">VerificationStatus</span>.error:      <span class="c">// see errorCode</span>
+}</pre>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap faq">
+    <div class="sec-head">
+      <span class="ftag">FAQ</span>
+      <h2>Common questions</h2>
+    </div>
+    <details><summary>Does it need an internet connection or a server?</summary><p>No. The core liveness and anti-spoof check runs fully on the device and works offline. A backend adapter is available if you want server-side checks too.</p></details>
+    <details><summary>Are face images stored or uploaded?</summary><p>Not by default. Camera frames are processed in memory, and only a structured, non-biometric result leaves the SDK.</p></details>
+    <details><summary>Which platforms does it support?</summary><p>Android and iOS, through a Flutter package.</p></details>
+    <details><summary>Can it match a selfie to a national ID card?</summary><p>Yes, with the NID eKYC add-on: the user scans both sides of the card and the portrait is matched to the live selfie.</p></details>
+    <details><summary>Does it detect deepfakes?</summary><p>Not reliably with the built-in models. Deepfake and AI-generated-face detection needs a plug-in PAD model, which the SDK's modular design supports. No liveness system is 100% accurate, and we're upfront about that.</p></details>
+  </div>
+</section>
+
+<section id="contact" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="contact">
+      <div>
+        <h2>See Face Defender in your app's flow.</h2>
+        <p class="lead">A free live demo on a real phone: passive and active checks, spoof attempts, and the NID eKYC add-on.</p>
+        <a class="wa" href="https://wa.me/8801799438398" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04.63C5.76.63.65 5.74.65 12.02c0 2.01.52 3.97 1.52 5.7L.55 23.63l6.04-1.58a11.36 11.36 0 0 0 5.44 1.39c6.28 0 11.39-5.11 11.39-11.39S18.32.63 12.04.63zm5.43 13.75c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49 2.47 1.07 2.97.86 3.56.8.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>WhatsApp: +880 1799-438398</a>
+      </div>
+      <form id="demo" data-product="Face Defender" data-wa="8801799438398">
+        <input name="name" aria-label="Name" required placeholder="Name">
+        <input name="org" aria-label="Bank or company" required placeholder="Bank or company">
+        <input name="email" type="email" aria-label="Work email" required placeholder="Work email">
+        <select name="use" aria-label="Use case"><option>Customer onboarding / eKYC</option><option>Login and step-up checks</option><option>Wallet or payments app</option><option>Something else</option></select>
+        <textarea name="msg" rows="3" aria-label="Message" placeholder="Tell us about your app and users"></textarea>
+        <button class="btn" type="submit">Book the demo</button>
+        <p class="status" role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <div class="f-top">
+    <div class="f-brand">
+      <img src="logo-full-white.svg" alt="Face Defender" width="179" height="32" loading="lazy">
+      <p>On-device face liveness and anti-spoofing SDK for banking, fintech and eKYC apps.</p>
+      <a class="btn" href="#contact">Book a demo →</a>
+    </div>
+    <nav class="f-col" aria-label="Product"><h4>Product</h4><a href="#how">How it works</a><a href="#features">Features</a><a href="#developers">Developers</a><a href="#faq">FAQ</a></nav>
+    <nav class="f-col" aria-label="Contact"><h4>Contact</h4><a class="wa-l" href="https://wa.me/8801799438398" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04.63C5.76.63.65 5.74.65 12.02c0 2.01.52 3.97 1.52 5.7L.55 23.63l6.04-1.58a11.36 11.36 0 0 0 5.44 1.39c6.28 0 11.39-5.11 11.39-11.39S18.32.63 12.04.63zm5.43 13.75c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49 2.47 1.07 2.97.86 3.56.8.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>WhatsApp</a><a href="#contact">Live demo</a></nav>
+    <nav class="f-col" aria-label="More products"><h4>More products</h4><a href="../hrm/">HRM Craft</a><a href="../storecraft/">StoreCraft</a></nav>
+  </div>
+  <div class="f-bottom"><span>© 2026 Face Defender</span><a href="../" target="_blank" rel="noopener">Built by Md. Nasir Uddin ↗</a></div>
+</div></footer>
+<script src="../shared/product.js"></script>
+</body>
+</html>

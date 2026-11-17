@@ -674,6 +674,16 @@ section { position:relative; z-index:1; }
 .cert b { font-size:14px; color:var(--text-head); font-weight:600; line-height:1.4; }
 .cert span { font-family:var(--font-mono); font-size:10px; letter-spacing:1px; color:var(--text-dim); }
 
+.pf-phones { display:flex; justify-content:center; align-items:center; min-height:420px; perspective:1200px; transform-style:preserve-3d; }
+.pf-phone { position:relative; width:150px; aspect-ratio:590/1278; padding:6px; border-radius:26px; background:linear-gradient(145deg,#2a3346,#0b1220);
+  box-shadow:inset 0 0 0 1px #3a455c, 0 30px 50px -20px rgba(0,0,0,.8); transition:transform .6s cubic-bezier(.2,.7,.2,1); }
+.pf-phone img { width:100%; height:100%; object-fit:cover; border-radius:20px; display:block; }
+.pf-phone.p1 { transform:translateX(40px) translateZ(-80px) rotateY(28deg); }
+.pf-phone.p2 { width:180px; z-index:2; transform:translateZ(30px); }
+.pf-phone.p3 { transform:translateX(-40px) translateZ(-80px) rotateY(-28deg); }
+.proj-feature:hover .pf-phone.p1 { transform:translateX(10px) translateZ(-60px) rotateY(18deg); }
+.proj-feature:hover .pf-phone.p3 { transform:translateX(-10px) translateZ(-60px) rotateY(-18deg); }
+.proj-feature:hover .pf-phone.p2 { transform:translateZ(50px) translateY(-6px); }
 /* ============================================================
    EDUCATION
    ============================================================ */
@@ -825,6 +835,7 @@ footer span { color:var(--accent); }
   .toggle-label { display:none; }
   .proj-feature { grid-template-columns:1fr; padding:28px 22px; gap:36px; }
   .pf-points { grid-template-columns:1fr; }
+  .pf-phones { min-height:330px; } .pf-phone { width:110px; } .pf-phone.p2 { width:140px; }
   .pf-f1 { left:-6px; } .pf-f2 { right:-4px; }
   .pf-rev .pf-f1 { right:-4px; left:auto; bottom:-14px; }
   .pf-rev .pf-visual { order:0; }
@@ -1214,6 +1225,37 @@ footer span { color:var(--accent); }
           <img src="storecraft/shots/01-hero.jpg" alt="StoreCraft storefront on laptop and phone, with the admin portal" width="1600" height="900" loading="lazy">
         </div>
         <div class="pf-float pf-f1"><b>3</b><span>web · android · ios</span></div>
+      </div>
+    </a>
+
+    <!-- FEATURED: FACE DEFENDER -->
+    <a href="face-defender/" target="_blank" rel="noopener" class="proj-feature reveal" aria-label="Open Face Defender product page in a new tab">
+      <div class="pf-text">
+        <div class="pf-badges">
+          <span class="pf-badge live">SDK · v1.19</span>
+          <span class="pf-badge">FEATURED · 003</span>
+        </div>
+        <h3 class="pf-name">Face Defender</h3>
+        <div class="pf-sub">Face Liveness &amp; Anti-Spoofing SDK</div>
+        <p class="pf-desc">A white-label Flutter SDK for banking, fintech and eKYC apps that confirms a real, live person is in front of the camera, and stops printed photos, screen replays and recorded videos, fully on-device with no per-check fees.</p>
+        <ul class="pf-points">
+          <li>Random, replay-resistant challenges</li>
+          <li>On-device anti-spoofing (PAD)</li>
+          <li>NID eKYC with face match</li>
+          <li>Device integrity checks</li>
+        </ul>
+        <div class="proj-techs">
+          <span class="tech-pill">Flutter / Dart</span><span class="tech-pill">Google ML Kit</span>
+          <span class="tech-pill">ONNX Runtime</span><span class="tech-pill">Kotlin · Swift</span>
+        </div>
+        <span class="pf-cta">Explore the product <span class="pf-arrow">↗</span></span>
+      </div>
+      <div class="pf-visual pf-phones">
+        <div class="pf-glow"></div>
+        <div class="pf-phone p1"><img src="face-defender/shots/verification_start.jpg" alt="" loading="lazy" width="590" height="1278"></div>
+        <div class="pf-phone p2"><img src="face-defender/shots/home_screen.jpg" alt="Face Defender app on a phone" loading="lazy" width="590" height="1278"></div>
+        <div class="pf-phone p3"><img src="face-defender/shots/verified_result.jpg" alt="" loading="lazy" width="590" height="1278"></div>
+        <div class="pf-float pf-f2"><b>94%</b><span>real person</span></div>
       </div>
     </a>
   </div>

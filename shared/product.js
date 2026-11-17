@@ -9,7 +9,7 @@
   onScroll(); addEventListener('scroll', onScroll, { passive: true });
 
   // reveal on scroll + straighten perspective screenshots
-  var targets = document.querySelectorAll('.card, .frow, .gallery figure, .stat, .plan, .steps li, details, .sec-head, .contact, .persp');
+  var targets = document.querySelectorAll('.card, .frow, .gallery figure, .trio figure, .code, .stat, .plan, .steps li, details, .sec-head, .contact, .persp, .phone-wrap');
   if ('IntersectionObserver' in window && !reduce) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
@@ -17,7 +17,7 @@
       });
     }, { threshold: 0.15 });
     targets.forEach(function (el, i) {
-      if (!el.classList.contains('persp')) { el.classList.add('rv'); el.style.transitionDelay = (i % 3) * 80 + 'ms'; }
+      if (!el.classList.contains('persp') && !el.classList.contains('phone-wrap')) { el.classList.add('rv'); el.style.transitionDelay = (i % 3) * 80 + 'ms'; }
       io.observe(el);
     });
   } else {

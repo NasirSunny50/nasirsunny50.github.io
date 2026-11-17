@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HRM Craft — Attendance, leave and rosters in one place</title>
+<meta name="description" content="বাংলাদেশি অফিস ও কারখানার জন্য HR সফটওয়্যার। বায়োমেট্রিক মেশিন থেকে হাজিরা, ছুটির হিসাব, রোস্টার, অনুমোদন, রিপোর্ট। আপনার নিজের সার্ভারে।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#16191d;--muted:#5b616b;--line:#dcd9d2;--bg:#faf9f6;--card:#fff;--accent:#1f4fd1;--accent-ink:#173c9e;--warm:#f3efe6}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font:17px/1.7 "Hind Siliguri","Source Sans 3",sans-serif;color:var(--ink);background:var(--bg)}
+body.en{font-family:"Source Sans 3",sans-serif;line-height:1.6}
+body.en [lang=bn],body:not(.en) [lang=en]{display:none}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;background:rgba(250,249,246,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);z-index:5}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font-weight:700;font-size:19px;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo i{display:inline-grid;place-items:center;width:30px;height:30px;background:var(--accent);color:#fff;font-style:normal;font-size:13px;border-radius:6px}
+nav{display:flex;align-items:center;gap:22px;font-size:15px}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.lang{border:1px solid var(--line);background:var(--card);padding:5px 12px;font:inherit;font-size:14px;cursor:pointer;border-radius:4px}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:12px 22px;border-radius:4px;border:0;font:inherit;font-weight:600;cursor:pointer}
+.btn:hover{background:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+h1,h2{font-weight:700;line-height:1.25;letter-spacing:-.01em}
+body.en h1,body.en h2{font-family:"Source Serif 4",serif;font-weight:600}
+h1{font-size:44px;max-width:16ch}
+h2{font-size:32px;max-width:24ch}
+h3{font-size:19px;line-height:1.35;margin-bottom:6px}
+.lead{font-size:19px;color:var(--muted);max-width:56ch;margin-top:18px}
+.hero{padding:64px 0 40px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero small{display:block;margin-top:14px;color:var(--muted);font-size:14px}
+.shot{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.04),0 12px 32px -18px rgba(20,25,35,.25)}
+.hero .shot{margin-top:44px}
+.caption{font-size:14px;color:var(--muted);margin-top:10px}
+section{padding:80px 0;border-top:1px solid var(--line)}
+.kicker{font-size:14px;font-weight:600;color:var(--accent);margin-bottom:10px;text-transform:none}
+.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:40px}
+.pains p{color:var(--muted)}
+.pains b{display:block;font-size:19px;margin-bottom:6px;color:var(--ink)}
+.feature{display:grid;grid-template-columns:5fr 7fr;gap:48px;align-items:center;margin-top:64px}
+.feature.flip{grid-template-columns:7fr 5fr}
+.feature.flip .text{order:2}
+.feature ul{padding-left:18px;margin-top:12px;color:var(--muted)}
+.feature li{margin:4px 0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.grid3 figure{margin:0}
+.warm{background:var(--warm)}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:36px}
+.facts div{border-top:2px solid var(--ink);padding-top:12px}
+.facts p{color:var(--muted);font-size:15px}
+table{width:100%;border-collapse:collapse;margin-top:36px;background:var(--card);font-size:16px}
+th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{font-size:15px;border-bottom:2px solid var(--ink)}
+thead th:not(:first-child),td:not(:first-child){text-align:center}
+td:first-child{color:var(--muted)}
+.price{font-size:26px;font-weight:700;color:var(--ink);display:block;line-height:1.2}
+.per{font-size:13px;color:var(--muted)}
+.pick{background:#eef2fd}
+.yes{color:#1b7a3d;font-weight:700}
+.no{color:#b3b8bf}
+.note{font-size:15px;color:var(--muted);margin-top:16px;max-width:80ch}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:40px;padding:0;list-style:none}
+.steps li{counter-increment:s}
+.steps li::before{content:counter(s,bengali);display:block;font-size:34px;font-weight:700;color:var(--accent);line-height:1}
+body.en .steps li::before{content:counter(s)}
+.steps p{color:var(--muted);font-size:16px}
+details{border-bottom:1px solid var(--line);padding:16px 0}
+details:first-of-type{border-top:1px solid var(--line);margin-top:32px}
+summary{cursor:pointer;font-weight:600;font-size:18px}
+details p{color:var(--muted);margin-top:8px;max-width:75ch}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+form{display:grid;gap:12px;margin-top:8px}
+input,textarea,select{font:inherit;padding:11px 12px;border:1px solid var(--line);background:#fff;border-radius:4px;width:100%}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:14px}
+@media(max-width:860px){
+ h1{font-size:32px}h2{font-size:26px}nav a{display:none}
+ .pains,.grid3,.facts,.steps,.contact,.feature,.feature.flip{grid-template-columns:1fr}
+ .feature.flip .text{order:0}.feature{gap:20px;margin-top:48px}
+ section{padding:56px 0}
+ .tablewrap{overflow-x:auto}table{min-width:640px}
+}
+</style>
+</head>
+<body class="en">
+<header><div class="wrap">
+  <a class="logo" href="#"><i>HC</i>HRM Craft</a>
+  <nav aria-label="Main">
+    <a href="#features"><span lang="bn">ফিচার</span><span lang="en">Features</span></a>
+    <a href="#pricing"><span lang="bn">দাম</span><span lang="en">Pricing</span></a>
+    <a href="#faq"><span lang="bn">প্রশ্ন</span><span lang="en">FAQ</span></a>
+    <button class="lang" id="lang" type="button" aria-label="Switch language">বাংলা</button>
+  </nav>
+</div></header>
+
+<main>
+<div class="wrap hero">
+  <h1><span lang="bn">মাস শেষে হাজিরা আর ছুটির হিসাব মেলাতে আর দুই দিন লাগবে না।</span><span lang="en">Month-end attendance and leave, without the two days of spreadsheets.</span></h1>
+  <p class="lead"><span lang="bn">ফিঙ্গারপ্রিন্ট মেশিনের পাঞ্চ নিজে থেকেই চলে আসে। কে লেট, কে ছুটিতে, কার কত দিন ছুটি বাকি, সব এক স্ক্রিনে। বাংলা ও ইংরেজি দুই ভাষাতেই চলে, আর ডেটা থাকে আপনার নিজের সার্ভারে।</span><span lang="en">Punches flow in from your fingerprint terminals on their own. Who is late, who is away and how much leave each person has left, on one screen. Works in Bangla and English, and the data lives on your own server.</span></p>
+  <div class="cta">
+    <a class="btn" href="#contact"><span lang="bn">লাইভ ডেমো দেখুন (৩০ মিনিট)</span><span lang="en">Book a 30-minute live demo</span></a>
+    <a class="btn ghost" href="#pricing"><span lang="bn">দাম দেখুন</span><span lang="en">See pricing</span></a>
+  </div>
+  <small><span lang="bn">২৫ জন থেকে ৫০০+ কর্মীর অফিস, কারখানা, স্কুল ও ক্লিনিকের জন্য।</span><span lang="en">For offices, factories, schools and clinics with 25 to 500+ people.</span></small>
+  <figure class="shot"><img lang="bn" src="shots/dashboard_bn.png" alt="বাংলায় HR ড্যাশবোর্ড: মোট কর্মী, উপস্থিত, লেট, ছুটিতে" width="1440" height="900"><img lang="en" src="shots/dashboard.png" alt="HR dashboard showing headcount, present, late and on leave" width="1440" height="900"></figure>
+  <p class="caption"><span lang="bn">আসল সফটওয়্যারের স্ক্রিনশট, নমুনা কোম্পানির ডেটা দিয়ে।</span><span lang="en">Real screenshots of the software, with a sample company's data.</span></p>
+</div>
+
+<section class="warm">
+  <div class="wrap">
+    <p class="kicker"><span lang="bn">এখন যা হয়</span><span lang="en">What usually happens now</span></p>
+    <h2><span lang="bn">তথ্য আছে, কিন্তু তিন জায়গায় ছড়ানো।</span><span lang="en">The information exists. It's just in three places.</span></h2>
+    <div class="pains">
+      <div><b lang="bn">হাজিরা আটকে থাকে মেশিনে</b><b lang="en">Attendance is stuck in the machine</b><p lang="bn">প্রতি মাসে USB দিয়ে ডেটা নামানো, Excel-এ বসানো, তারপর হাতে লেট গোনা।</p><p lang="en">Every month someone pulls a USB export into Excel and counts late days by hand.</p></div>
+      <div><b lang="bn">ছুটির হিসাব কেউ জানে না</b><b lang="en">Nobody knows the leave balance</b><p lang="bn">"আমার কয়দিন ছুটি বাকি?" এর উত্তর দিতে HR-কে পুরনো ফাইল ঘাঁটতে হয়।</p><p lang="en">"How many days do I have left?" means HR digging through old files and emails.</p></div>
+      <div><b lang="bn">অনুমোদন হারিয়ে যায়</b><b lang="en">Approvals get lost</b><p lang="bn">ছুটি বা হাজিরা ঠিক করার আবেদন WhatsApp-এ আসে, পরে কেউ খুঁজে পায় না কে অনুমতি দিয়েছিল।</p><p lang="en">Requests arrive on WhatsApp, and later no one can find who approved what.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <p class="kicker"><span lang="bn">ভেতরে কী আছে</span><span lang="en">What's inside</span></p>
+    <h2><span lang="bn">যোগদানের দিন থেকে শেষ কর্মদিবস পর্যন্ত।</span><span lang="en">From joining day to last working day.</span></h2>
+
+    <div class="feature">
+      <div class="text">
+        <h3><span lang="bn">বায়োমেট্রিক মেশিন থেকে স্বয়ংক্রিয় হাজিরা</span><span lang="en">Automatic attendance from biometric terminals</span></h3>
+        <p lang="bn">ZKTeco সহ বাজারের প্রচলিত মেশিনের সাথে যুক্ত হয়। নতুন মেশিন কিনতে হবে না।</p><p lang="en">Connects to common terminals, ZKTeco included. No new hardware needed.</p>
+        <ul lang="bn"><li>মেশিন অনলাইন না অফলাইন, ড্যাশবোর্ডেই দেখা যায়</li><li>সফটওয়্যার থেকেই কর্মীকে মেশিনে এনরোল</li><li>একাধিক শাখা, প্রতিটির আলাদা মেশিন</li></ul>
+        <ul lang="en"><li>See which terminal is online or offline</li><li>Enrol staff on devices from the software</li><li>Several branches, each with its own devices</li></ul>
+      </div>
+      <figure class="shot"><img src="shots/devices.png" alt="Devices list with online and offline status" loading="lazy" width="1440" height="900"></figure>
+    </div>
+
+    <div class="feature flip">
+      <div class="text">
+        <h3><span lang="bn">ছুটির ব্যালান্স যেটা নিজের হিসাব নিজে বোঝায়</span><span lang="en">Leave balances that explain themselves</span></h3>
+        <p lang="bn">Earned, Sick, Casual, যেকোনো ধরন আর নিয়ম আপনি নিজে ঠিক করবেন। প্রতিটা সংখ্যার পাশে "এটা কেন?" চাপলে পুরো হিসাব দেখা যায়।</p><p lang="en">Set up any leave type and rule yourself. Click "why is this?" next to any number to see exactly how it was reached.</p>
+        <ul lang="bn"><li>মাসিক accrual, carry-forward, encashment</li><li>কে কবে ছুটিতে, এক ক্যালেন্ডারে</li><li>বাংলাদেশ শ্রম আইনের ধাঁচে প্রিসেট, চাইলে বদলানো যায়</li></ul>
+        <ul lang="en"><li>Monthly accrual, carry-forward, encashment</li><li>Who is away and when, on one calendar</li><li>Bangladesh-style presets you can edit</li></ul>
+      </div>
+      <figure class="shot"><img lang="bn" src="shots/leave_bn.png" alt="বাংলায় ছুটির ব্যালান্স" loading="lazy" width="1440" height="900"><img lang="en" src="shots/leave.png" alt="Leave balances" loading="lazy" width="1440" height="900"></figure>
+    </div>
+
+    <div class="feature">
+      <div class="text">
+        <h3><span lang="bn">শিফট ও রোস্টার, কারখানার মতো করে</span><span lang="en">Shifts and rosters that suit a factory floor</span></h3>
+        <p lang="bn">সপ্তাহের রোস্টার কয়েক ক্লিকে। কর্মীরা নিজেরা শিফট বদলের আবেদন করতে পারে, ম্যানেজার অনুমোদন দেন।</p><p lang="en">Build the week's roster in a few clicks. Staff can request shift swaps and managers approve them.</p>
+      </div>
+      <figure class="shot"><img src="shots/roster.png" alt="Weekly roster grid" loading="lazy" width="1440" height="900"></figure>
+    </div>
+
+    <div class="grid3">
+      <figure><div class="shot"><img src="shots/employees.png" alt="Employee directory with filters" loading="lazy" width="1440" height="900"></div><figcaption class="caption"><span lang="bn">কর্মী তালিকা, ডকুমেন্ট, রিপোর্টিং লাইন, Excel থেকে ইমপোর্ট</span><span lang="en">Employee records, documents, reporting lines, Excel import</span></figcaption></figure>
+      <figure><div class="shot"><img src="shots/reports.png" alt="Reports: attendance, leave, roster, headcount" loading="lazy" width="1440" height="900"></div><figcaption class="caption"><span lang="bn">লেট, ওভারটাইম, ছুটি, হেডকাউন্ট রিপোর্ট; Excel/PDF</span><span lang="en">Late, overtime, leave and headcount reports; Excel/PDF</span></figcaption></figure>
+      <figure><div class="shot"><img src="shots/organogram.png" alt="Organogram by designation" loading="lazy" width="1440" height="900"></div><figcaption class="caption"><span lang="bn">অর্গানোগ্রাম, PDF হিসেবে প্রিন্ট</span><span lang="en">Organogram, printable as PDF</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="warm">
+  <div class="wrap">
+    <p class="kicker"><span lang="bn">কেন আলাদা</span><span lang="en">Why it's different</span></p>
+    <h2><span lang="bn">ভাড়া করা সফটওয়্যার নয়, আপনার নিজের সিস্টেম।</span><span lang="en">Not rented software. Your own system.</span></h2>
+    <div class="facts">
+      <div><h3 lang="bn">ডেটা আপনার কাছে</h3><h3 lang="en">Your data stays yours</h3><p lang="bn">প্রতিটি কোম্পানির আলাদা সার্ভার আর ডাটাবেস। অন্য কারো সাথে শেয়ার হয় না।</p><p lang="en">Every company gets its own server and database. Nothing is shared.</p></div>
+      <div><h3 lang="bn">কে কী দেখবে, আপনি ঠিক করবেন</h3><h3 lang="en">You decide who sees what</h3><p lang="bn">HR, বিভাগীয় প্রধান, লাইন ম্যানেজার, শাখা, কর্মী, প্রত্যেকে শুধু নিজের অংশ দেখে।</p><p lang="en">HR, department heads, line managers, branches and staff each see only their part.</p></div>
+      <div><h3 lang="bn">প্রতিটা কাজের রেকর্ড</h3><h3 lang="en">Every action is recorded</h3><p lang="bn">কে কখন কোন হাজিরা ঠিক করেছে বা ছুটি অনুমোদন দিয়েছে, মুছে ফেলা যায় না।</p><p lang="en">Who corrected which punch or approved which leave, kept permanently.</p></div>
+      <div><h3 lang="bn">মোবাইলেও চলে</h3><h3 lang="en">Works on phones</h3><p lang="bn">কর্মীরা ফোন থেকে ছুটির আবেদন, হাজিরা আর পেস্লিপ দেখতে পারে।</p><p lang="en">Staff apply for leave and check attendance and payslips from their phone.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <p class="kicker"><span lang="bn">দাম</span><span lang="en">Pricing</span></p>
+    <h2><span lang="bn">একবার সেটআপ, তারপর ছোট মাসিক সাপোর্ট।</span><span lang="en">One setup fee, then a small monthly support fee.</span></h2>
+    <p class="lead"><span lang="bn">প্রতি কর্মী প্রতি মাসে টাকা গুনতে হবে না। সফটওয়্যার আপনার নামে ইনস্টল হয়।</span><span lang="en">No per-employee monthly fee. The software is installed for you, in your name.</span></p>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th></th><th><span lang="bn">ছোট অফিস</span><span lang="en">Small office</span></th><th class="pick"><span lang="bn">বাড়ন্ত প্রতিষ্ঠান</span><span lang="en">Growing company</span></th><th><span lang="bn">কারখানা / একাধিক শাখা</span><span lang="en">Factory / multi-branch</span></th></tr></thead>
+      <tbody>
+        <tr><td><span lang="bn">কর্মী</span><span lang="en">Employees</span></td><td><span lang="bn">৭৫ জন পর্যন্ত</span><span lang="en">up to 75</span></td><td class="pick"><span lang="bn">২৫০ জন পর্যন্ত</span><span lang="en">up to 250</span></td><td><span lang="bn">৬০০ জন পর্যন্ত</span><span lang="en">up to 600</span></td></tr>
+        <tr><td><span lang="bn">সেটআপ (একবার)</span><span lang="en">Setup (one time)</span></td><td><span class="price">৳৩৫,০০০</span></td><td class="pick"><span class="price">৳৬৫,০০০</span></td><td><span class="price">৳১,২০,০০০</span></td></tr>
+        <tr><td><span lang="bn">সাপোর্ট ও আপডেট</span><span lang="en">Support and updates</span></td><td>৳১,৫০০<span class="per" lang="bn"> / মাস</span><span class="per" lang="en"> / month</span></td><td class="pick">৳২,৫০০<span class="per" lang="bn"> / মাস</span><span class="per" lang="en"> / month</span></td><td>৳৪,৫০০<span class="per" lang="bn"> / মাস</span><span class="per" lang="en"> / month</span></td></tr>
+        <tr><td><span lang="bn">শাখা</span><span lang="en">Branches</span></td><td>১</td><td class="pick"><span lang="bn">৩ পর্যন্ত</span><span lang="en">up to 3</span></td><td><span lang="bn">সীমা নেই</span><span lang="en">unlimited</span></td></tr>
+        <tr><td><span lang="bn">বায়োমেট্রিক মেশিন সংযোগ</span><span lang="en">Biometric devices connected</span></td><td>২</td><td class="pick">৬</td><td><span lang="bn">সীমা নেই</span><span lang="en">unlimited</span></td></tr>
+        <tr><td><span lang="bn">পুরনো Excel ডেটা ইমপোর্ট</span><span lang="en">Import existing Excel data</span></td><td class="yes">✔</td><td class="pick yes">✔</td><td class="yes">✔</td></tr>
+        <tr><td><span lang="bn">HR টিমের ট্রেনিং</span><span lang="en">HR team training</span></td><td><span lang="bn">২ ঘণ্টা অনলাইন</span><span lang="en">2 hours online</span></td><td class="pick"><span lang="bn">অফিসে গিয়ে ১ দিন</span><span lang="en">1 day on site</span></td><td><span lang="bn">অফিসে গিয়ে ২ দিন</span><span lang="en">2 days on site</span></td></tr>
+        <tr><td><span lang="bn">নিজস্ব লোগো ও রং</span><span lang="en">Your logo and colours</span></td><td class="yes">✔</td><td class="pick yes">✔</td><td class="yes">✔</td></tr>
+        <tr><td><span lang="bn">সমস্যার উত্তর</span><span lang="en">Response time</span></td><td><span lang="bn">পরের কর্মদিবস</span><span lang="en">next working day</span></td><td class="pick"><span lang="bn">একই দিন</span><span lang="en">same day</span></td><td><span lang="bn">৪ ঘণ্টার মধ্যে</span><span lang="en">within 4 hours</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note"><span lang="bn">সার্ভার: আপনার নিজের থাকলে সেখানেই বসাব। না থাকলে আমরা আপনার নামে একটা ক্লাউড সার্ভার ঠিক করে দেব, খরচ মাসে মোটামুটি ৳৬০০–১,৫০০, সরাসরি প্রোভাইডারকে। ফিঙ্গারপ্রিন্ট মেশিন দামের মধ্যে নেই। প্রথম মাসের সাপোর্ট ফ্রি। সব দাম আলোচনাসাপেক্ষ, NGO ও স্কুলের জন্য ছাড় আছে।</span><span lang="en">Server: we install on yours, or set up a cloud server in your name (about ৳600–1,500 a month, paid directly to the provider). Fingerprint terminals are not included. The first month of support is free. Prices are negotiable, with discounts for NGOs and schools.</span></p>
+  </div>
+</section>
+
+<section class="warm">
+  <div class="wrap">
+    <p class="kicker"><span lang="bn">কীভাবে শুরু হয়</span><span lang="en">How it starts</span></p>
+    <h2><span lang="bn">সাধারণত ৭ থেকে ১০ দিনে চালু।</span><span lang="en">Usually live in 7 to 10 days.</span></h2>
+    <ol class="steps">
+      <li><h3 lang="bn">ডেমো কল</h3><h3 lang="en">Demo call</h3><p lang="bn">৩০ মিনিটে আপনার কাজের ধরন বুঝে সফটওয়্যারটা চালিয়ে দেখাই।</p><p lang="en">30 minutes: we learn how you work and walk you through it.</p></li>
+      <li><h3 lang="bn">সেটআপ</h3><h3 lang="en">Setup</h3><p lang="bn">শাখা, বিভাগ, শিফট, ছুটির নিয়ম আর আপনার মেশিন যুক্ত করা।</p><p lang="en">Branches, departments, shifts, leave rules and your terminals.</p></li>
+      <li><h3 lang="bn">ডেটা ইমপোর্ট</h3><h3 lang="en">Data import</h3><p lang="bn">আপনার Excel থেকে কর্মীদের তথ্য ও আগের ছুটির ব্যালান্স তুলে দিই।</p><p lang="en">We bring in staff records and opening leave balances from your Excel.</p></li>
+      <li><h3 lang="bn">ট্রেনিং ও চালু</h3><h3 lang="en">Training and go-live</h3><p lang="bn">HR টিমকে শেখানো, প্রথম মাস-শেষের হিসাব একসাথে মেলানো।</p><p lang="en">Train the HR team and close the first month together.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2><span lang="bn">সাধারণ প্রশ্ন</span><span lang="en">Common questions</span></h2>
+    <details><summary><span lang="bn">আমাদের পুরনো ফিঙ্গারপ্রিন্ট মেশিন কি চলবে?</span><span lang="en">Will our existing fingerprint machine work?</span></summary><p lang="bn">ZKTeco আর যেসব মেশিন নেটওয়ার্কে ডেটা পাঠাতে পারে, সেগুলো সরাসরি চলে। মডেল নম্বর জানালে কেনার আগেই নিশ্চিত করে দেব।</p><p lang="en">ZKTeco and terminals that can send data over the network work directly. Send us the model number and we'll confirm before you pay.</p></details>
+    <details><summary><span lang="bn">বেতন (পেরোল) কি হয়?</span><span lang="en">Does it do payroll?</span></summary><p lang="bn">বেসিক পেরোল আছে: বেতন কাঠামো, মাসিক রান, পেস্লিপ। জটিল ট্যাক্স বা ব্যাংক ফাইল লাগলে ডেমোতে আপনার প্রয়োজনটা দেখে বলব।</p><p lang="en">Basic payroll is included: salary structures, monthly runs and payslips. If you need complex tax rules or bank files, we'll look at your case in the demo.</p></details>
+    <details><summary><span lang="bn">ইন্টারনেট না থাকলে কী হবে?</span><span lang="en">What if the internet goes down?</span></summary><p lang="bn">মেশিন নিজের মেমোরিতে পাঞ্চ রেখে দেয়। ইন্টারনেট ফিরলে সব পাঞ্চ নিজে থেকেই সিস্টেমে চলে আসে।</p><p lang="en">Terminals keep punches in their own memory and the system collects them once the connection is back.</p></details>
+    <details><summary><span lang="bn">পরে কর্মী বাড়লে?</span><span lang="en">What if we grow?</span></summary><p lang="bn">শুধু দুই প্যাকেজের সেটআপ ফি-র পার্থক্যটা দিয়ে উপরের প্যাকেজে যাওয়া যায়। ডেটা যেমন আছে তেমনই থাকে।</p><p lang="en">Pay only the difference between the two setup fees to move up. Your data stays as it is.</p></details>
+    <details><summary><span lang="bn">সাপোর্ট বন্ধ করলে সফটওয়্যার বন্ধ হয়ে যাবে?</span><span lang="en">If we stop support, does the software stop?</span></summary><p lang="bn">না। সফটওয়্যার চলতেই থাকবে। শুধু নতুন আপডেট আর সমস্যার সমাধান পাবেন না।</p><p lang="en">No. It keeps running. You just stop receiving updates and fixes.</p></details>
+  </div>
+</section>
+
+<section id="contact" class="warm">
+  <div class="wrap contact">
+    <div>
+      <h2><span lang="bn">আপনার অফিসের ডেটা দিয়েই দেখে নিন।</span><span lang="en">See it with your own office's numbers.</span></h2>
+      <p class="lead"><span lang="bn">৩০ মিনিটের অনলাইন ডেমো, কোনো বাধ্যবাধকতা নেই। চাইলে ৭ দিন নিজেরা চালিয়ে দেখার জন্য একটা ট্রায়াল সার্ভারও দিই।</span><span lang="en">A 30-minute online demo, no commitment. We can also give you a 7-day trial server to try it yourselves.</span></p>
+      <p style="margin-top:20px"><b>WhatsApp:</b> <span id="wa">+880 1799-438398</span></p>
+    </div>
+    <form id="f">
+      <input name="n" aria-label="Name" required placeholder="নাম / Name">
+      <input name="c" aria-label="Company" required placeholder="প্রতিষ্ঠান / Company">
+      <input name="p" aria-label="Phone" required placeholder="ফোন / Phone">
+      <select name="s" aria-label="Staff"><option>১–৭৫ জন / 1–75</option><option>৭৬–২৫০ জন / 76–250</option><option>২৫০+ জন / 250+</option></select>
+      <textarea name="m" rows="3" aria-label="Message" placeholder="কোন মেশিন ব্যবহার করেন? / Which machine do you use?"></textarea>
+      <button class="btn" type="submit"><span lang="bn">ডেমো বুক করুন</span><span lang="en">Book the demo</span></button>
+      <p role="status" id="st" class="note"></p>
+    </form>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">HRM Craft · IntelliCraft Technologies · <span lang="bn">স্ক্রিনশটের নাম ও তথ্য নমুনা ডেটা।</span><span lang="en">Names and figures in screenshots are sample data.</span></div></footer>
+<script>
+const b=document.body,l=document.getElementById('lang');
+function set(en){b.classList.toggle('en',en);document.documentElement.lang=en?'en':'bn';l.textContent=en?'বাংলা':'English';try{localStorage.setItem('hc_lang',en?'en':'bn')}catch(e){}}
+let en=true;try{if(localStorage.getItem('hc_lang')==='bn')en=false}catch(e){}
+if(location.hash==='#bn')en=false;
+set(en);
+l.onclick=()=>set(!b.classList.contains('en'));
+document.getElementById('f').onsubmit=e=>{e.preventDefault();const d=new FormData(e.target),wa=document.getElementById('wa').textContent.replace(/\D/g,'');
+const t=`ডেমো চাই: ${d.get('n')}, ${d.get('c')}, ${d.get('p')}, ${d.get('s')}. ${d.get('m')}`;
+if(/^880\d{10}$/.test(wa))location.href='https://wa.me/'+wa+'?text='+encodeURIComponent(t);
+else document.getElementById('st').textContent='Thanks. (Demo page: WhatsApp number not set yet.)';};
+</script>
+</body>
+</html>

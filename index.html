@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Md. Nasir Uddin — Senior SQA Engineer</title>
+<meta name="description" content="Md. Nasir Uddin, Senior SQA Engineer specialising in fintech and banking quality: test automation, API, performance and security testing. Creator of HRM Craft.">
+<meta property="og:title" content="Md. Nasir Uddin — Senior SQA Engineer">
+<meta property="og:description" content="Quality engineering for fintech and banking systems. Test automation, API, performance and security testing.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="hrm/shots/dashboard.png">
+<meta name="theme-color" content="#020610">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23020610'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='26' font-weight='700' text-anchor='middle' fill='%2300f5ff'%3EMN%3C/text%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
@@ -549,11 +556,96 @@ section { position:relative; z-index:1; }
   color:color-mix(in srgb,var(--accent2) 90%,white); letter-spacing:1px;
 }
 
+.proj-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; }
+.proj-top .proj-num { margin:0; }
+.proj-icon {
+  width:46px; height:46px; display:grid; place-items:center; font-size:22px;
+  background:color-mix(in srgb,var(--accent) 8%,transparent);
+  border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);
+  clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);
+}
+
+/* Featured project */
+.proj-feature {
+  display:grid; grid-template-columns:5fr 6fr; gap:48px; align-items:center;
+  margin-bottom:28px; padding:44px; position:relative; overflow:hidden;
+  text-decoration:none; color:inherit; cursor:none;
+  background:
+    radial-gradient(600px 300px at 100% 0%, color-mix(in srgb,var(--accent2) 14%,transparent), transparent 70%),
+    radial-gradient(500px 300px at 0% 100%, color-mix(in srgb,var(--accent) 10%,transparent), transparent 70%),
+    var(--card);
+  border:1px solid var(--border);
+  clip-path:polygon(0 0,calc(100% - 32px) 0,100% 32px,100% 100%,32px 100%,0 calc(100% - 32px));
+  transition:border-color .35s, box-shadow .35s;
+}
+.proj-feature::before {
+  content:''; position:absolute; inset:0; padding:1px; pointer-events:none;
+  background:linear-gradient(120deg,var(--accent),transparent 35%,transparent 65%,var(--accent2));
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude; opacity:.7;
+}
+.proj-feature:hover { border-color:var(--border-h); box-shadow:var(--shadow); }
+.pf-badges { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px; }
+.pf-badge {
+  font-family:var(--font-mono); font-size:10px; letter-spacing:2px;
+  padding:4px 12px; color:var(--text-dim);
+  border:1px solid var(--border);
+}
+.pf-badge.live {
+  color:var(--tl-dot-c); display:inline-flex; align-items:center; gap:7px;
+  border-color:color-mix(in srgb,var(--tl-dot-c) 40%,transparent);
+  background:color-mix(in srgb,var(--tl-dot-c) 8%,transparent);
+}
+.pf-badge.live::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--tl-dot-c); box-shadow:0 0 8px var(--tl-dot-c); animation:pulse 1.5s infinite; }
+.pf-name {
+  font-family:var(--font-head); font-size:clamp(30px,3.6vw,46px); font-weight:900; line-height:1.05;
+  background:linear-gradient(90deg,var(--text-head),var(--accent) 60%,var(--accent2));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.pf-sub { margin-top:8px; font-size:14px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:color-mix(in srgb,var(--accent) 75%,var(--text)); }
+.pf-desc { margin:18px 0; font-size:15px; line-height:1.8; color:var(--text-dim); }
+.pf-points { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:8px 18px; margin-bottom:22px; }
+.pf-points li { font-size:13px; color:var(--text); padding-left:20px; position:relative; }
+.pf-points li::before { content:'✓'; position:absolute; left:0; color:var(--accent3); font-weight:700; }
+.pf-cta {
+  display:inline-flex; align-items:center; gap:10px; margin-top:26px;
+  padding:12px 26px; border:1px solid var(--accent); color:var(--accent);
+  font-family:var(--font-head); font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase;
+  clip-path:var(--btn-clip); transition:background .3s,color .3s;
+}
+.pf-arrow { transition:transform .3s; }
+.proj-feature:hover .pf-cta { background:var(--accent); color:var(--bg); }
+.proj-feature:hover .pf-arrow { transform:translateX(5px); }
+.pf-visual { position:relative; perspective:1200px; }
+.pf-glow { position:absolute; inset:12% 8%; background:linear-gradient(135deg,var(--accent),var(--accent2)); filter:blur(60px); opacity:.35; }
+.pf-frame {
+  position:relative; border:1px solid var(--border-h); background:#fff;
+  border-radius:10px; overflow:hidden;
+  box-shadow:0 30px 60px -25px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.04);
+  transform:rotateY(-10deg) rotateX(4deg); transition:transform .6s cubic-bezier(.2,.7,.2,1);
+}
+.proj-feature:hover .pf-frame { transform:rotateY(0) rotateX(0) scale(1.02); }
+.pf-bar { display:flex; align-items:center; gap:6px; height:26px; padding:0 12px; background:#eef1f6; border-bottom:1px solid #dde2ea; }
+.pf-bar i { width:8px; height:8px; border-radius:50%; background:#ff5f57; }
+.pf-bar i:nth-child(2){ background:#febc2e; } .pf-bar i:nth-child(3){ background:#28c840; }
+.pf-bar span { margin-left:10px; font-family:var(--font-mono); font-size:10px; color:#6b7280; letter-spacing:1px; }
+.pf-frame img { display:block; width:100%; height:auto; }
+.pf-float {
+  position:absolute; padding:10px 16px; background:var(--nav-bg); backdrop-filter:blur(12px);
+  border:1px solid var(--border-h); box-shadow:var(--glow);
+  animation:floatY 5s ease-in-out infinite;
+}
+.pf-float b { display:block; font-family:var(--font-head); font-size:20px; color:var(--accent); line-height:1.1; }
+.pf-float span { font-family:var(--font-mono); font-size:9px; letter-spacing:2px; color:var(--text-dim); text-transform:uppercase; }
+.pf-f1 { left:-18px; bottom:14%; }
+.pf-f2 { right:-12px; top:-14px; animation-delay:-2.5s; }
+@keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
 /* ============================================================
    EDUCATION
    ============================================================ */
 #education { background:var(--bg); transition:background .6s; }
-.edu-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; }
+.edu-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:20px; }
 .edu-card {
   background:var(--card); border:1px solid var(--border);
   padding:28px 28px 28px 32px; position:relative; overflow:hidden;
@@ -573,7 +665,7 @@ section { position:relative; z-index:1; }
 /* ============================================================
    ABOUT
    ============================================================ */
-#about { background:var(--bg2); transition:background .6s; }
+#about { background:var(--bg); transition:background .6s; }
 .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
 .about-text p { font-size:15px; color:var(--text-dim); line-height:1.95; margin-bottom:18px; }
 .about-text p span { color:var(--accent); font-weight:600; }
@@ -601,7 +693,7 @@ section { position:relative; z-index:1; }
 /* ============================================================
    CONTACT
    ============================================================ */
-#contact { background:var(--bg); transition:background .6s; }
+#contact { background:var(--bg2); transition:background .6s; }
 .contact-center { max-width:680px; margin:0 auto; text-align:center; }
 .contact-center p { font-size:16px; color:var(--text-dim); line-height:1.85; margin-bottom:44px; }
 .contact-links { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
@@ -644,22 +736,78 @@ footer span { color:var(--accent); }
 @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 
 /* ============================================================
+   POLISH: progress bar, reveal, marquee, mobile menu, active nav
+   ============================================================ */
+.progress { position:fixed; top:0; left:0; height:2px; width:0; z-index:1001; background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3)); box-shadow:0 0 10px var(--accent); }
+.reveal { opacity:0; transform:translateY(30px); transition:opacity .8s ease, transform .8s ease, border-color .35s, box-shadow .35s, background .35s; }
+.reveal.vis { opacity:1; transform:none; }
+.proj-card.reveal.vis:hover { transform:translateY(-6px); }
+.skill-cat.reveal.vis:hover, .edu-card.reveal.vis:hover { transform:translateY(-4px); }
+.nav-links a.active { color:var(--accent); }
+.nav-links a.active::after { width:100%; }
+.hire {
+  display:inline-flex; align-items:center; gap:8px; margin-bottom:26px;
+  padding:6px 14px; font-family:var(--font-mono); font-size:10px; letter-spacing:2px;
+  color:var(--tl-dot-c); border:1px solid color-mix(in srgb,var(--tl-dot-c) 35%,transparent);
+  background:color-mix(in srgb,var(--tl-dot-c) 7%,transparent);
+  opacity:0; animation:fadeUp .8s .1s forwards;
+}
+.hire::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--tl-dot-c); box-shadow:0 0 10px var(--tl-dot-c); animation:pulse 1.5s infinite; }
+.marquee { position:relative; z-index:1; overflow:hidden; border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--bg2); padding:18px 0; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); }
+.marquee-track { display:flex; gap:48px; width:max-content; animation:marq 38s linear infinite; }
+.marquee span { font-family:var(--font-head); font-size:14px; font-weight:700; letter-spacing:3px; color:var(--text-dim); white-space:nowrap; display:flex; align-items:center; gap:48px; }
+.marquee span::after { content:'◆'; font-size:8px; color:var(--accent); }
+@keyframes marq { to { transform:translateX(-50%); } }
+.menu-btn { display:none; background:none; border:1px solid var(--border); width:42px; height:38px; cursor:pointer; position:relative; }
+.menu-btn i { position:absolute; left:11px; right:11px; height:1.5px; background:var(--accent); transition:transform .3s, opacity .3s; }
+.menu-btn i:nth-child(1){ top:12px; } .menu-btn i:nth-child(2){ top:18px; } .menu-btn i:nth-child(3){ top:24px; }
+.menu-open .menu-btn i:nth-child(1){ transform:translateY(6px) rotate(45deg); }
+.menu-open .menu-btn i:nth-child(2){ opacity:0; }
+.menu-open .menu-btn i:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
+.nav-right { display:flex; align-items:center; gap:12px; }
+@media (hover:none), (pointer:coarse) {
+  body, .btn-p, .btn-s, .c-link, .c-email, .theme-toggle, .proj-feature { cursor:auto; }
+  .cursor, .cursor-ring { display:none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+  .reveal { opacity:1; transform:none; }
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media(max-width:960px) {
+  .menu-btn { display:block; }
+  .nav-links {
+    display:flex !important; position:fixed; top:var(--nav-h,78px); left:0; right:0;
+    flex-direction:column; gap:0; background:var(--nav-bg); backdrop-filter:blur(24px);
+    border-bottom:1px solid var(--border);
+    max-height:0; overflow:hidden; transition:max-height .4s ease;
+  }
+  .nav-links li a { display:block; padding:16px 28px; font-size:12px; border-top:1px solid var(--border); }
+  .menu-open .nav-links { max-height:420px; }
+  .toggle-label { display:none; }
+  .proj-feature { grid-template-columns:1fr; padding:28px 22px; gap:36px; }
+  .pf-points { grid-template-columns:1fr; }
+  .pf-f1 { left:-6px; } .pf-f2 { right:-4px; }
+  .scroll-hint { display:none; }
   nav { padding:20px 28px; }
   .nav-links { display:none; }
   #hero { flex-direction:column; padding:120px 28px 60px; gap:40px; }
   .hero-right { display:none; }
   .section-wrap { padding:80px 28px; }
   .about-grid { grid-template-columns:1fr; }
-  .hero-stats { gap:24px; }
+  .hero-stats { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .hero-btns a { padding:13px 22px; }
   footer { padding:36px 28px; }
   .theme-toggle { top:16px; right:16px; padding:8px 14px; }
 }
 </style>
 </head>
 <body>
+
+<div class="progress" id="progress"></div>
 
 <!-- Cursor -->
 <div class="cursor" id="cur"></div>
@@ -671,7 +819,7 @@ footer span { color:var(--accent); }
 <div class="orb orb3"></div>
 
 <nav>
-  <div class="nav-logo" id="navLogo">MNU//</div>
+  <a href="#hero" class="nav-logo" id="navLogo" style="text-decoration:none">MNU//</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -680,23 +828,28 @@ footer span { color:var(--accent); }
     <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <div class="nav-right">
   <!-- ===== THEME TOGGLE ===== -->
   <div class="theme-toggle" id="themeToggle" title="Switch Theme">
     <div class="toggle-icons"><span id="iconA">🌐</span></div>
     <div class="toggle-track"><div class="toggle-thumb"></div></div>
     <div class="toggle-label" id="themeLabel">CYBER</div>
   </div>
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div>
 </nav>
 
 <!-- ===== HERO ===== -->
 <section id="hero">
   <div class="hero-left">
+    <div class="hire">OPEN TO NEW OPPORTUNITIES</div>
     <div class="hero-tag" id="heroTag">// Senior SQA Engineer — Fintech</div>
     <h1 class="hero-name">MD. NASIR<br><span class="accent">UDDIN</span></h1>
     <div class="hero-role">Senior <strong>SQA Engineer</strong> · Kona Software Lab</div>
     <p class="hero-desc">Ensuring flawless quality in fintech and banking systems. Specialized in test automation, API testing, performance engineering, and security compliance for high-stakes financial applications.</p>
     <div class="hero-btns">
-      <a href="#experience" class="btn-p">View Experience</a>
+      <a href="#projects" class="btn-p">View Projects</a>
+      <a href="#experience" class="btn-s">Experience</a>
       <a href="#contact" class="btn-s">Get In Touch</a>
     </div>
     <div class="hero-stats">
@@ -754,6 +907,41 @@ footer span { color:var(--accent); }
   </div>
 
   <div class="scroll-hint"><div class="scroll-line"></div>SCROLL TO EXPLORE</div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="marquee-track"><span>SELENIUM</span><span>ROBOT FRAMEWORK</span><span>POSTMAN</span><span>SOAPUI</span><span>JMETER</span><span>BURP SUITE</span><span>TESTRAIL</span><span>JIRA</span><span>PYTHON</span><span>JAVA</span><span>SQL</span><span>API TESTING</span><span>PERFORMANCE</span><span>SECURITY</span><span>SELENIUM</span><span>ROBOT FRAMEWORK</span><span>POSTMAN</span><span>SOAPUI</span><span>JMETER</span><span>BURP SUITE</span><span>TESTRAIL</span><span>JIRA</span><span>PYTHON</span><span>JAVA</span><span>SQL</span><span>API TESTING</span><span>PERFORMANCE</span><span>SECURITY</span></div></div>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-tag">// About Me</div>
+      <h2 class="section-title">WHO I AM</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a <span>Senior SQA Engineer</span> with a passion for ensuring software quality in high-stakes environments. Currently at <span>Kona Software Lab Ltd.</span>, I work on critical banking applications — NexusPay and MBL Rainbow — where quality is non-negotiable.</p>
+        <p>My background in <span>Computer Science from North South University</span> and a <span>Masters in IT from Jahangirnagar University</span> gives me a strong foundation in both theoretical and applied software engineering.</p>
+        <p>Beyond testing, I'm deeply interested in <span>Artificial Intelligence and Machine Learning</span>. I love photography, gaming, and have even published magazines — BICCHURON and KOLOTAN.</p>
+      </div>
+      <div class="about-details">
+        <div class="detail-row"><div class="detail-icon">📍</div><div><div class="detail-lbl">Location</div><div class="detail-val">Mirpur, Dhaka, Bangladesh</div></div></div>
+        <div class="detail-row"><div class="detail-icon">🌐</div><div><div class="detail-lbl">Languages</div><div class="detail-val">Bengali (Native) · English (Proficient)</div></div></div>
+        <div class="detail-row"><div class="detail-icon">🎯</div><div><div class="detail-lbl">Interests</div><div class="detail-val">Photography · Gaming · AI Research</div></div></div>
+        <div class="detail-row"><div class="detail-icon">🏅</div><div><div class="detail-lbl">Certifications</div><div class="detail-val">Udemy · Kaggle · Analytics Vidhya</div></div></div>
+      </div>
+    </div>
+    <div class="achieve-grid">
+      <div class="achieve-item">Highest Wicket Taker — TigerIT Intra Cricket Tournament, 2024</div>
+      <div class="achieve-item">Regular Attendance Award — Monipur High School & College</div>
+      <div class="achieve-item">University Football Cup Award — 2018</div>
+      <div class="achieve-item">Multiple Photography & Drawing Prizes</div>
+      <div class="achieve-item">Published Magazines: BICCHURON & KOLOTAN</div>
+      <div class="achieve-item">IEEE "Fun with Robot" Participant</div>
+      <div class="achieve-item">NSU Problem Solving Contest</div>
+      <div class="achieve-item">Data Science Path — Analytics Vidhya 2020</div>
+    </div>
+  </div>
 </section>
 
 <!-- ===== SKILLS ===== -->
@@ -940,26 +1128,59 @@ footer span { color:var(--accent); }
       <div class="section-tag">// Notable Work</div>
       <h2 class="section-title">PROJECTS</h2>
     </div>
+    <!-- FEATURED: HRM CRAFT -->
+    <a href="hrm/" class="proj-feature reveal" aria-label="Open HRM Craft product page">
+      <div class="pf-text">
+        <div class="pf-badges">
+          <span class="pf-badge live">LIVE PRODUCT</span>
+          <span class="pf-badge">FEATURED · 001</span>
+        </div>
+        <h3 class="pf-name">HRM Craft</h3>
+        <div class="pf-sub">Self-hosted HR &amp; Attendance Platform</div>
+        <p class="pf-desc">A complete HR system for offices and factories: punches stream in from biometric terminals, leave balances explain themselves, rosters, approvals and reports in one place, bilingual in Bangla &amp; English, on the client's own server.</p>
+        <ul class="pf-points">
+          <li>Biometric device sync (ZKTeco)</li>
+          <li>Leave accrual &amp; approvals</li>
+          <li>Shift rosters &amp; swaps</li>
+          <li>Role-based access &amp; audit trail</li>
+        </ul>
+        <div class="proj-techs">
+          <span class="tech-pill">HR SaaS</span><span class="tech-pill">Biometric Integration</span>
+          <span class="tech-pill">Bilingual UI</span><span class="tech-pill">Reports · Excel/PDF</span>
+        </div>
+        <span class="pf-cta">Explore the product <span class="pf-arrow">→</span></span>
+      </div>
+      <div class="pf-visual">
+        <div class="pf-glow"></div>
+        <div class="pf-frame">
+          <div class="pf-bar"><i></i><i></i><i></i><span>hrm-craft / dashboard</span></div>
+          <img src="hrm/shots/dashboard.png" alt="HRM Craft dashboard with headcount, attendance and leave overview" width="1440" height="900" loading="lazy">
+        </div>
+        <div class="pf-float pf-f1"><b>64%</b><span>present today</span></div>
+        <div class="pf-float pf-f2"><b>7–10</b><span>days to go live</span></div>
+      </div>
+    </a>
+
     <div class="proj-grid">
-      <div class="proj-card">
-        <div class="proj-num">// PROJECT 001</div>
-        <div class="proj-name">Mask Detection & Distance Monitor</div>
+      <div class="proj-card reveal">
+        <div class="proj-top"><div class="proj-icon">🧠</div><div class="proj-num">// 002</div></div>
+        <div class="proj-name">Mask Detection &amp; Distance Monitor</div>
         <p class="proj-desc">AI-powered real-time system for social distancing and face mask detection during COVID-19. Uses deep neural networks and computer vision.</p>
         <div class="proj-techs">
           <span class="tech-pill">Python</span><span class="tech-pill">TensorFlow</span>
           <span class="tech-pill">Keras</span><span class="tech-pill">MobileNetV2</span><span class="tech-pill">OpenCV</span>
         </div>
       </div>
-      <div class="proj-card">
-        <div class="proj-num">// PROJECT 002</div>
+      <div class="proj-card reveal">
+        <div class="proj-top"><div class="proj-icon">🏠</div><div class="proj-num">// 003</div></div>
         <div class="proj-name">BashaBari — Smart Housing Platform</div>
         <p class="proj-desc">Android application bridging homeowners and tenants. Enables seamless communication and manages all essential housing-related operations.</p>
         <div class="proj-techs">
           <span class="tech-pill">Android</span><span class="tech-pill">Java</span><span class="tech-pill">Firebase</span>
         </div>
       </div>
-      <div class="proj-card">
-        <div class="proj-num">// PROJECT 003</div>
+      <div class="proj-card reveal">
+        <div class="proj-top"><div class="proj-icon">🛒</div><div class="proj-num">// 004</div></div>
         <div class="proj-name">Gadget Blast — E-Commerce Platform</div>
         <p class="proj-desc">Full-featured e-commerce website for an electronics retail shop with product listings, cart management, and complete shopping experience.</p>
         <div class="proj-techs">
@@ -982,39 +1203,6 @@ footer span { color:var(--accent); }
       <div class="edu-card"><div class="edu-year">GRADUATED 2022</div><div class="edu-degree">B.Sc. in Computer Science & Engineering</div><div class="edu-school">North South University</div><div class="edu-gpa">CGPA: 3.30 / 4.00</div></div>
       <div class="edu-card"><div class="edu-year">2017</div><div class="edu-degree">Higher Secondary Certificate (HSC)</div><div class="edu-school">Dhaka City College</div><div class="edu-gpa">GPA: 5.00 / 5.00</div></div>
       <div class="edu-card"><div class="edu-year">2015</div><div class="edu-degree">Secondary School Certificate (SSC)</div><div class="edu-school">Monipur High School & College</div><div class="edu-gpa">GPA: 5.00 / 5.00</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== ABOUT ===== -->
-<section id="about">
-  <div class="section-wrap">
-    <div class="section-header">
-      <div class="section-tag">// About Me</div>
-      <h2 class="section-title">WHO I AM</h2>
-    </div>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>I'm a <span>Senior SQA Engineer</span> with a passion for ensuring software quality in high-stakes environments. Currently at <span>Kona Software Lab Ltd.</span>, I work on critical banking applications — NexusPay and MBL Rainbow — where quality is non-negotiable.</p>
-        <p>My background in <span>Computer Science from North South University</span> and a <span>Masters in IT from Jahangirnagar University</span> gives me a strong foundation in both theoretical and applied software engineering.</p>
-        <p>Beyond testing, I'm deeply interested in <span>Artificial Intelligence and Machine Learning</span>. I love photography, gaming, and have even published magazines — BICCHURON and KOLOTAN.</p>
-      </div>
-      <div class="about-details">
-        <div class="detail-row"><div class="detail-icon">📍</div><div><div class="detail-lbl">Location</div><div class="detail-val">Mirpur, Dhaka, Bangladesh</div></div></div>
-        <div class="detail-row"><div class="detail-icon">🌐</div><div><div class="detail-lbl">Languages</div><div class="detail-val">Bengali (Native) · English (Proficient)</div></div></div>
-        <div class="detail-row"><div class="detail-icon">🎯</div><div><div class="detail-lbl">Interests</div><div class="detail-val">Photography · Gaming · AI Research</div></div></div>
-        <div class="detail-row"><div class="detail-icon">🏅</div><div><div class="detail-lbl">Certifications</div><div class="detail-val">Udemy · Kaggle · Analytics Vidhya</div></div></div>
-      </div>
-    </div>
-    <div class="achieve-grid">
-      <div class="achieve-item">Highest Wicket Taker — TigerIT Intra Cricket Tournament, 2024</div>
-      <div class="achieve-item">Regular Attendance Award — Monipur High School & College</div>
-      <div class="achieve-item">University Football Cup Award — 2018</div>
-      <div class="achieve-item">Multiple Photography & Drawing Prizes</div>
-      <div class="achieve-item">Published Magazines: BICCHURON & KOLOTAN</div>
-      <div class="achieve-item">IEEE "Fun with Robot" Participant</div>
-      <div class="achieve-item">NSU Problem Solving Contest</div>
-      <div class="achieve-item">Data Science Path — Analytics Vidhya 2020</div>
     </div>
   </div>
 </section>
@@ -1090,6 +1278,34 @@ const obs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('vis'); });
 }, {threshold:0.12});
 document.querySelectorAll('.tl-item').forEach(el=>obs.observe(el));
+document.querySelectorAll('.skill-cat,.edu-card,.detail-row,.achieve-item,.section-header').forEach(el=>el.classList.add('reveal'));
+document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=(i%3)*90+'ms'; obs.observe(el); });
+
+/* ---- MOBILE MENU ---- */
+const navEl=document.querySelector('nav'), menuBtn=document.getElementById('menuBtn');
+const setNavH=()=>document.documentElement.style.setProperty('--nav-h',navEl.offsetHeight+'px');
+setNavH(); addEventListener('resize',setNavH);
+menuBtn.addEventListener('click',()=>{ const o=document.body.classList.toggle('menu-open'); menuBtn.setAttribute('aria-expanded',o); });
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{ document.body.classList.remove('menu-open'); menuBtn.setAttribute('aria-expanded',false); }));
+
+/* ---- SCROLL PROGRESS + ACTIVE NAV ---- */
+const prog=document.getElementById('progress');
+const navLinks=[...document.querySelectorAll('.nav-links a')];
+const secs=navLinks.map(a=>document.querySelector(a.getAttribute('href')));
+function onScroll(){
+  const h=document.documentElement.scrollHeight-innerHeight;
+  prog.style.width=(h>0?scrollY/h*100:0)+'%';
+  let cur=-1; secs.forEach((sec,i)=>{ if(sec && sec.getBoundingClientRect().top < innerHeight*0.4) cur=i; });
+  navLinks.forEach((a,i)=>a.classList.toggle('active',i===cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+/* ---- STAT COUNT-UP ---- */
+document.querySelectorAll('.stat-num').forEach(el=>{
+  const m=el.textContent.match(/^(\d+)(.*)$/); if(!m) return;
+  const end=+m[1], suf=m[2]; let n=0; el.textContent='0'+suf;
+  setTimeout(()=>{ const step=()=>{ n++; el.textContent=n+suf; if(n<end) setTimeout(step,Math.max(40,600/end)); }; step(); },1300);
+});
 
 /* ---- TYPING HERO TAG ---- */
 const tagEl = document.getElementById('heroTag');
@@ -1156,14 +1372,18 @@ setTimeout(()=>{
     { r:520, speed:0.0007, dash:0,   t:4, opacity:0.03 },
   ];
 
-  let t = 0;
+  let t = 0, colors = null, colorsTheme = null, heroVisible = true;
+  new IntersectionObserver(e=>{ const was=heroVisible; heroVisible=e[0].isIntersecting; if(heroVisible && !was) requestAnimationFrame(draw); }).observe(hero);
   function draw(){
+    if(!heroVisible) return;
     ctx.clearRect(0,0,W,H);
     t += 0.016;
 
-    const a1 = parseAccent('--accent');
-    const a2 = parseAccent('--accent2');
-    const a3 = parseAccent('--accent3');
+    if(!colors || colorsTheme!==document.documentElement.dataset.theme){
+      colors=[parseAccent('--accent'),parseAccent('--accent2'),parseAccent('--accent3')];
+      colorsTheme=document.documentElement.dataset.theme;
+    }
+    const [a1,a2,a3]=colors;
 
     // ── 1. Soft aurora blobs ──
     const blobs = [

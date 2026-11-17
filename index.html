@@ -684,6 +684,16 @@ section { position:relative; z-index:1; }
 .proj-feature:hover .pf-phone.p1 { transform:translateX(10px) translateZ(-60px) rotateY(18deg); }
 .proj-feature:hover .pf-phone.p3 { transform:translateX(-10px) translateZ(-60px) rotateY(-18deg); }
 .proj-feature:hover .pf-phone.p2 { transform:translateZ(50px) translateY(-6px); }
+.pf-chat { position:relative; width:min(340px,100%); margin:0 auto; border-radius:18px; overflow:hidden; background:#fff; box-shadow:0 40px 70px -28px rgba(0,0,0,.8);
+  transform:rotateY(12deg) rotateX(4deg); transition:transform .6s cubic-bezier(.2,.7,.2,1); }
+.proj-feature:hover .pf-chat { transform:rotateY(0) rotateX(0) scale(1.03); }
+.pc-head { display:flex; align-items:center; gap:10px; padding:12px 14px; background:#0B6574; color:#fff; font-family:'DM Sans',sans-serif; }
+.pc-head img { background:#fff; border-radius:8px; padding:2px; }
+.pc-head b { display:block; font-size:14px; } .pc-head small { font-size:11px; opacity:.85; }
+.pc-body { display:flex; flex-direction:column; gap:8px; padding:14px; background:#f6fafa; font-family:'DM Sans',sans-serif; font-size:13px; line-height:1.5; }
+.pc-body p { max-width:85%; padding:8px 11px; border-radius:12px; margin:0; }
+.pc-body .b { align-self:flex-start; background:#fff; border:1px solid #dcebed; color:#1e293b; border-bottom-left-radius:4px; }
+.pc-body .u { align-self:flex-end; background:#0B6574; color:#fff; border-bottom-right-radius:4px; }
 /* ============================================================
    EDUCATION
    ============================================================ */
@@ -872,7 +882,7 @@ footer span { color:var(--accent); }
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
+    <li><a href="#projects">Products</a></li>
     <li><a href="#publications">Research</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -897,7 +907,7 @@ footer span { color:var(--accent); }
     <div class="hero-role">Senior <strong>SQA Engineer</strong> · Kona Software Lab</div>
     <p class="hero-desc">Quality assurance for fintech, mobile banking and government e-Governance platforms: microservices applications serving millions of customers. Manual and automated testing, API and database validation, performance and security testing, end to end.</p>
     <div class="hero-btns">
-      <a href="#projects" class="btn-p">View Projects</a>
+      <a href="#projects" class="btn-p">View Products</a>
       <a href="#experience" class="btn-s">Experience</a>
       <a href="#contact" class="btn-s">Get In Touch</a>
     </div>
@@ -1160,8 +1170,8 @@ footer span { color:var(--accent); }
 <section id="projects">
   <div class="section-wrap">
     <div class="section-header">
-      <div class="section-tag">// Notable Work</div>
-      <h2 class="section-title">PROJECTS</h2>
+      <div class="section-tag">// Things I've Built</div>
+      <h2 class="section-title">PRODUCTS</h2>
     </div>
     <!-- FEATURED: HRM CRAFT -->
     <a href="hrm/" target="_blank" rel="noopener" class="proj-feature reveal" aria-label="Open HRM Craft product page in a new tab">
@@ -1256,6 +1266,43 @@ footer span { color:var(--accent); }
         <div class="pf-phone p2"><img src="face-defender/shots/home_screen.jpg" alt="Face Defender app on a phone" loading="lazy" width="590" height="1278"></div>
         <div class="pf-phone p3"><img src="face-defender/shots/verified_result.jpg" alt="" loading="lazy" width="590" height="1278"></div>
         <div class="pf-float pf-f2"><b>94%</b><span>real person</span></div>
+      </div>
+    </a>
+
+    <!-- FEATURED: CRAFTBOT -->
+    <a href="craftbot/" target="_blank" rel="noopener" class="proj-feature pf-rev reveal" aria-label="Open CraftBot product page in a new tab">
+      <div class="pf-text">
+        <div class="pf-badges">
+          <span class="pf-badge live">LIVE PRODUCT</span>
+          <span class="pf-badge">FEATURED · 004</span>
+        </div>
+        <h3 class="pf-name">CraftBot</h3>
+        <div class="pf-sub">AI Website Assistant</div>
+        <p class="pf-desc">An AI chat assistant that learns every page of a business website and answers visitors around the clock, in their own language. It re-syncs on its own when the site changes, and falls back across AI providers so it never goes down.</p>
+        <ul class="pf-points">
+          <li>Incremental website sync</li>
+          <li>Bangla &amp; multi-language answers</li>
+          <li>Multi-provider AI fallback</li>
+          <li>Client admin &amp; billing portal</li>
+        </ul>
+        <div class="proj-techs">
+          <span class="tech-pill">Node.js</span><span class="tech-pill">React</span>
+          <span class="tech-pill">LLMs · RAG</span><span class="tech-pill">AnythingLLM</span>
+        </div>
+        <span class="pf-cta">Explore the product <span class="pf-arrow">↗</span></span>
+      </div>
+      <div class="pf-visual">
+        <div class="pf-glow"></div>
+        <div class="pf-chat">
+          <div class="pc-head"><img src="craftbot/logo.svg" alt="" width="28" height="28"><span><b>Website Assistant</b><small>Online</small></span></div>
+          <div class="pc-body">
+            <p class="b">Hi! Ask me anything about our products.</p>
+            <p class="u">Do you install CCTV for factories?</p>
+            <p class="b">Yes. We design and install CCTV systems for factories, with a site survey and maintenance.</p>
+            <p class="u" lang="bn">দাম কেমন পড়বে?</p>
+          </div>
+        </div>
+        <div class="pf-float pf-f1"><b>24/7</b><span>answers</span></div>
       </div>
     </a>
   </div>

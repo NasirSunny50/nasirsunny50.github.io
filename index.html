@@ -646,10 +646,38 @@ section { position:relative; z-index:1; }
 .pf-rev:hover .pf-frame { transform:rotateY(0) rotateX(0) scale(1.02); }
 .pf-rev .pf-f1 { left:auto; right:-18px; bottom:-18px; }
 .proj-feature + .proj-feature { margin-top:32px; }
+/* About photo */
+.about-photo { position:relative; width:180px; margin-bottom:28px; }
+.about-photo img { display:block; width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; border:1px solid var(--border-h);
+  clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px)); filter:saturate(.95); }
+.about-photo::before { content:''; position:absolute; inset:10px -10px -10px 10px; border:1px solid var(--accent); opacity:.5;
+  clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px)); z-index:-1; }
+.ap-tag { position:absolute; left:-8px; bottom:14px; padding:4px 10px; background:var(--bg); border:1px solid var(--border-h);
+  font-family:var(--font-mono); font-size:9px; letter-spacing:2px; color:var(--accent); }
+
+/* Publications & certifications */
+#publications { background:var(--bg); transition:background .6s; }
+.pub-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+.pub-card { display:block; text-decoration:none; color:inherit; cursor:none; padding:28px 30px; background:var(--card); border:1px solid var(--border);
+  clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,0 100%); transition:border-color .3s, background .3s; position:relative; }
+.pub-card::before { content:''; position:absolute; top:0; left:0; width:2px; height:100%; background:linear-gradient(to bottom,var(--accent),transparent); }
+.pub-card:hover { border-color:var(--border-h); background:var(--card-h); }
+.pub-meta { display:flex; justify-content:space-between; gap:12px; font-family:var(--font-mono); font-size:10px; letter-spacing:2px; color:var(--accent); margin-bottom:14px; }
+.pub-doi { color:var(--text-dim); transition:color .3s; } .pub-card:hover .pub-doi { color:var(--accent); }
+.pub-title { font-family:var(--font-head); font-size:15px; font-weight:700; line-height:1.45; color:var(--text-head); margin-bottom:12px; }
+.pub-authors { font-size:13px; color:var(--text-dim); line-height:1.7; } .pub-authors b { color:var(--text); }
+.pub-id { margin-top:14px; font-family:var(--font-mono); font-size:11px; color:var(--accent3); letter-spacing:1px; }
+.cert-head { margin:56px 0 18px; font-family:var(--font-mono); font-size:11px; letter-spacing:4px; color:var(--accent); }
+.cert-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
+.cert { padding:18px 20px; border:1px solid var(--border); background:color-mix(in srgb,var(--accent3) 3%,transparent); display:flex; flex-direction:column; gap:6px; transition:border-color .3s; }
+.cert:hover { border-color:var(--accent3); }
+.cert b { font-size:14px; color:var(--text-head); font-weight:600; line-height:1.4; }
+.cert span { font-family:var(--font-mono); font-size:10px; letter-spacing:1px; color:var(--text-dim); }
+
 /* ============================================================
    EDUCATION
    ============================================================ */
-#education { background:var(--bg); transition:background .6s; }
+#education { background:var(--bg2); transition:background .6s; }
 .edu-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:20px; }
 .edu-card {
   background:var(--card); border:1px solid var(--border);
@@ -783,6 +811,8 @@ footer span { color:var(--accent); }
    RESPONSIVE
    ============================================================ */
 @media(max-width:960px) {
+  .pub-grid { grid-template-columns:1fr; }
+  .about-photo { width:150px; }
   .menu-btn { display:block; }
   .nav-links {
     display:flex !important; position:fixed; top:var(--nav-h,78px); left:0; right:0;
@@ -832,6 +862,7 @@ footer span { color:var(--accent); }
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#publications">Research</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -850,20 +881,20 @@ footer span { color:var(--accent); }
 <section id="hero">
   <div class="hero-left">
     <div class="hire">OPEN TO NEW OPPORTUNITIES</div>
-    <div class="hero-tag" id="heroTag">// Senior SQA Engineer — Fintech</div>
+    <div class="hero-tag" id="heroTag">// Senior SQA Engineer — Fintech &amp; Mobile Banking</div>
     <h1 class="hero-name">MD. NASIR<br><span class="accent">UDDIN</span></h1>
     <div class="hero-role">Senior <strong>SQA Engineer</strong> · Kona Software Lab</div>
-    <p class="hero-desc">Ensuring flawless quality in fintech and banking systems. Specialized in test automation, API testing, performance engineering, and security compliance for high-stakes financial applications.</p>
+    <p class="hero-desc">Quality assurance for fintech, mobile banking and government e-Governance platforms: microservices applications serving millions of customers. Manual and automated testing, API and database validation, performance and security testing, end to end.</p>
     <div class="hero-btns">
       <a href="#projects" class="btn-p">View Projects</a>
       <a href="#experience" class="btn-s">Experience</a>
-      <a href="#contact" class="btn-s">Get In Touch</a>
+      <a href="assets/Md_Nasir_Uddin_CV.pdf" class="btn-s" download>Download CV ↓</a>
     </div>
     <div class="hero-stats">
-      <div class="stat-item"><div class="stat-num">3+</div><div class="stat-label">Years Exp.</div></div>
+      <div class="stat-item"><div class="stat-num">4+</div><div class="stat-label">Years in QA</div></div>
       <div class="stat-item"><div class="stat-num">10+</div><div class="stat-label">Tools Mastered</div></div>
       <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">Banking Apps</div></div>
-      <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Govt. Projects</div></div>
+      <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">Publications</div></div>
     </div>
   </div>
   <div class="hero-right">
@@ -916,7 +947,7 @@ footer span { color:var(--accent); }
   <div class="scroll-hint"><div class="scroll-line"></div>SCROLL TO EXPLORE</div>
 </section>
 
-<div class="marquee" aria-hidden="true"><div class="marquee-track"><span>SELENIUM</span><span>ROBOT FRAMEWORK</span><span>POSTMAN</span><span>SOAPUI</span><span>JMETER</span><span>BURP SUITE</span><span>TESTRAIL</span><span>JIRA</span><span>PYTHON</span><span>JAVA</span><span>SQL</span><span>API TESTING</span><span>PERFORMANCE</span><span>SECURITY</span><span>SELENIUM</span><span>ROBOT FRAMEWORK</span><span>POSTMAN</span><span>SOAPUI</span><span>JMETER</span><span>BURP SUITE</span><span>TESTRAIL</span><span>JIRA</span><span>PYTHON</span><span>JAVA</span><span>SQL</span><span>API TESTING</span><span>PERFORMANCE</span><span>SECURITY</span></div></div>
+<div class="marquee" aria-hidden="true"><div class="marquee-track"><span>SELENIUM</span><span>ROBOT FRAMEWORK</span><span>POSTMAN</span><span>SOAPUI</span><span>JMETER</span><span>BURP SUITE</span><span>TESTRAIL</span><span>JIRA</span><span>PYTHON</span><span>JAVA</span><span>SQL</span><span>APPIUM</span><span>JENKINS</span><span>OWASP</span><span>API TESTING</span><span>PERFORMANCE</span><span>SECURITY</span><span>SELENIUM</span><span>ROBOT FRAMEWORK</span><span>POSTMAN</span><span>SOAPUI</span><span>JMETER</span><span>BURP SUITE</span><span>TESTRAIL</span><span>JIRA</span><span>PYTHON</span><span>JAVA</span><span>SQL</span><span>APPIUM</span><span>JENKINS</span><span>OWASP</span><span>API TESTING</span><span>PERFORMANCE</span><span>SECURITY</span></div></div>
 
 <!-- ===== ABOUT ===== -->
 <section id="about">
@@ -927,15 +958,16 @@ footer span { color:var(--accent); }
     </div>
     <div class="about-grid">
       <div class="about-text">
-        <p>I'm a <span>Senior SQA Engineer</span> with a passion for ensuring software quality in high-stakes environments. Currently at <span>Kona Software Lab Ltd.</span>, I work on critical banking applications — NexusPay and MBL Rainbow — where quality is non-negotiable.</p>
+        <div class="about-photo"><img src="assets/nasir.jpg" alt="Md. Nasir Uddin" width="560" height="700" loading="lazy"><span class="ap-tag">// QA · FINTECH</span></div>
+        <p>I'm a <span>Senior SQA Engineer</span> specialising in fintech, mobile banking and government e-Governance platforms. At <span>Kona Software Lab Ltd.</span> I own QA for Dutch-Bangla Bank's <span>NexusPay</span> and Mercantile Bank's <span>MBL Rainbow</span>, microservices applications serving millions of customers, where quality is non-negotiable.</p>
         <p>My background in <span>Computer Science from North South University</span> and a <span>Masters in IT from Jahangirnagar University</span> gives me a strong foundation in both theoretical and applied software engineering.</p>
-        <p>Beyond testing, I'm deeply interested in <span>Artificial Intelligence and Machine Learning</span>. I love photography, gaming, and have even published magazines — BICCHURON and KOLOTAN.</p>
+        <p>Beyond testing, I build products: <span>HRM Craft</span> and <span>StoreCraft</span>. I'm also into <span>AI and machine learning</span>, with two published research papers. Outside work: photography, gaming, and the magazines BICCHURON and KOLOTAN.</p>
       </div>
       <div class="about-details">
-        <div class="detail-row"><div class="detail-icon">📍</div><div><div class="detail-lbl">Location</div><div class="detail-val">Mirpur, Dhaka, Bangladesh</div></div></div>
-        <div class="detail-row"><div class="detail-icon">🌐</div><div><div class="detail-lbl">Languages</div><div class="detail-val">Bengali (Native) · English (Proficient)</div></div></div>
-        <div class="detail-row"><div class="detail-icon">🎯</div><div><div class="detail-lbl">Interests</div><div class="detail-val">Photography · Gaming · AI Research</div></div></div>
-        <div class="detail-row"><div class="detail-icon">🏅</div><div><div class="detail-lbl">Certifications</div><div class="detail-val">Udemy · Kaggle · Analytics Vidhya</div></div></div>
+        <div class="detail-row"><div class="detail-icon">📍</div><div><div class="detail-lbl">Location</div><div class="detail-val">Dhaka, Bangladesh</div></div></div>
+        <div class="detail-row"><div class="detail-icon">🌐</div><div><div class="detail-lbl">Languages</div><div class="detail-val">Bengali (Native) · English (Professional)</div></div></div>
+        <div class="detail-row"><div class="detail-icon">🏦</div><div><div class="detail-lbl">Domains</div><div class="detail-val">Fintech &amp; MFS · Core &amp; Mobile Banking · e-Governance · Biometric Identity</div></div></div>
+        <div class="detail-row"><div class="detail-icon">🏅</div><div><div class="detail-lbl">Certifications</div><div class="detail-val">Postman · HackerRank · Kaggle · Udemy</div></div></div>
       </div>
     </div>
     <div class="achieve-grid">
@@ -960,42 +992,28 @@ footer span { color:var(--accent); }
     </div>
     <div class="skills-grid">
       <div class="skill-cat">
-        <div class="skill-cat-title">🧪 Testing</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Manual Testing</span><span class="skill-tag">Test Automation</span>
-          <span class="skill-tag">API Testing</span><span class="skill-tag">Smoke Testing</span>
-          <span class="skill-tag">Black Box Testing</span><span class="skill-tag">Integration Testing</span>
-          <span class="skill-tag">Regression Testing</span><span class="skill-tag">UAT</span>
-          <span class="skill-tag">Load Testing</span><span class="skill-tag">Performance Testing</span>
-          <span class="skill-tag">Security Testing</span>
-        </div>
+        <div class="skill-cat-title">🧪 Testing &amp; Methods</div>
+        <div class="skill-tags"><span class="skill-tag">Functional</span><span class="skill-tag">Regression</span><span class="skill-tag">Smoke &amp; Sanity</span><span class="skill-tag">Integration</span><span class="skill-tag">API</span><span class="skill-tag">UAT</span><span class="skill-tag">Performance</span><span class="skill-tag">Security</span><span class="skill-tag">Agile / Scrum</span><span class="skill-tag">SDLC &amp; STLC</span><span class="skill-tag">Defect Life Cycle</span></div>
       </div>
       <div class="skill-cat">
-        <div class="skill-cat-title">🛠️ Tools & Frameworks</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Selenium</span><span class="skill-tag">Robot Framework</span>
-          <span class="skill-tag">Postman</span><span class="skill-tag">SoapUI</span>
-          <span class="skill-tag">JMeter</span><span class="skill-tag">Burp Suite</span>
-          <span class="skill-tag">TestRail</span><span class="skill-tag">Jira</span>
-        </div>
+        <div class="skill-cat-title">🤖 Automation &amp; CI/CD</div>
+        <div class="skill-tags"><span class="skill-tag">Selenium WebDriver</span><span class="skill-tag">Robot Framework</span><span class="skill-tag">Appium</span><span class="skill-tag">Jenkins</span><span class="skill-tag">Git</span><span class="skill-tag">GitHub</span></div>
       </div>
       <div class="skill-cat">
-        <div class="skill-cat-title">💻 Programming</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Python</span><span class="skill-tag">Java</span>
-          <span class="skill-tag">C#</span><span class="skill-tag">JavaScript</span>
-          <span class="skill-tag">HTML</span><span class="skill-tag">CSS</span>
-          <span class="skill-tag">SQL</span>
-        </div>
+        <div class="skill-cat-title">🔌 API &amp; Performance</div>
+        <div class="skill-tags"><span class="skill-tag">Postman</span><span class="skill-tag">SoapUI</span><span class="skill-tag">REST &amp; SOAP</span><span class="skill-tag">JSON / XML</span><span class="skill-tag">Apache JMeter</span></div>
       </div>
       <div class="skill-cat">
-        <div class="skill-cat-title">🤖 AI / Data</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Machine Learning</span><span class="skill-tag">TensorFlow</span>
-          <span class="skill-tag">OpenCV</span><span class="skill-tag">Pandas</span>
-          <span class="skill-tag">Data Analysis</span><span class="skill-tag">Data Visualization</span>
-          <span class="skill-tag">Microservices</span><span class="skill-tag">SDLC / STLC</span>
-        </div>
+        <div class="skill-cat-title">🛡️ Security &amp; Data</div>
+        <div class="skill-tags"><span class="skill-tag">Burp Suite</span><span class="skill-tag">OWASP</span><span class="skill-tag">Oracle</span><span class="skill-tag">MySQL</span><span class="skill-tag">SQL Data Validation</span></div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-title">📋 Test Management</div>
+        <div class="skill-tags"><span class="skill-tag">TestRail</span><span class="skill-tag">Jira</span><span class="skill-tag">Traceability</span><span class="skill-tag">Test Planning</span><span class="skill-tag">Defect Tracking</span></div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-title">💻 Programming &amp; AI</div>
+        <div class="skill-tags"><span class="skill-tag">Java</span><span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">JavaScript</span><span class="skill-tag">TensorFlow</span><span class="skill-tag">OpenCV</span><span class="skill-tag">Machine Learning</span></div>
       </div>
     </div>
   </div>
@@ -1019,16 +1037,15 @@ footer span { color:var(--accent); }
             <div class="tl-company">Kona Software Lab Ltd.</div>
             <div class="tl-period">JUL 2025 — PRESENT</div>
           </div>
-          <div class="tl-role">Senior SQA Engineer</div>
+          <div class="tl-role">Senior SQA Engineer III</div>
           <ul class="tl-pts">
-            <li>Contributed to banking projects including Dutch-Bangla Bank's NexusPay and Mercantile Bank's MBL Rainbow, ensuring system quality, security compliance, and user satisfaction.</li>
-            <li>Performed manual and automated testing for fintech and mobile financial service applications built on microservices architecture.</li>
-            <li>Designed, executed, and maintained test cases in TestRail, ensuring full traceability and coverage.</li>
-            <li>Conducted API testing, integration testing, regression testing, and log analysis for stability and performance.</li>
-            <li>Executed load and performance testing to validate system reliability under high transaction volumes.</li>
-            <li>Facilitated User Acceptance Testing (UAT) with clients and business teams before each release.</li>
-            <li>Mentored junior QA engineers on testing methodologies, fintech knowledge, and best practices.</li>
-            <li>Collaborated with cross-functional teams using Jira for sprint planning and issue tracking.</li>
+            <li>Own end-to-end QA for <strong>Dutch-Bangla Bank's NexusPay</strong> and <strong>Mercantile Bank's MBL Rainbow</strong>: microservices-based mobile financial platforms serving millions of customers.</li>
+            <li>Maintain the full test-case library in TestRail with end-to-end traceability, turning business requirements into functional, non-functional and regulatory test plans.</li>
+            <li>Validate APIs, integrations and regressions through hands-on testing and log analysis, proving reliability under peak transaction volumes with load and performance runs.</li>
+            <li>Investigate live production issues alongside developers and DevOps, turning findings into same-day fixes.</li>
+            <li>Drive User Acceptance Testing (UAT) with banking clients and business teams, clarifying requirements and confirming release readiness.</li>
+            <li>Manage defect tracking, sprint planning and QA reporting in Jira across cross-functional Agile teams.</li>
+            <li>Mentor junior QA engineers on testing methodology, fintech domain knowledge and best practices.</li>
           </ul>
         </div>
       </div>
@@ -1041,8 +1058,9 @@ footer span { color:var(--accent); }
             <div class="tl-company">TigerIT Bangladesh Ltd.</div>
             <div class="tl-period">FEB 2025 — JUL 2025</div>
           </div>
-          <div class="tl-role">Senior Software Engineer QA</div>
+          <div class="tl-role">Senior Software Engineer, QA</div>
           <ul class="tl-pts">
+            <li>Contributed to government projects including the <strong>Prisoner Inmate Database System (PIDS)</strong> and <strong>Managed ICT Support Service for ICT &amp; e-Governance</strong>, for clients such as the Civil Aviation Authority of Bangladesh (CAAB) and the National Telecommunication Monitoring Centre (NTMC).</li>
             <li>Spearheaded quality and process improvement initiatives, implementing new standards and policies.</li>
             <li>Managed assigned projects end-to-end, ensuring quality, timeliness, and budget adherence.</li>
             <li>Participated in code reviews and design discussions, providing valuable feedback and suggestions.</li>
@@ -1060,11 +1078,11 @@ footer span { color:var(--accent); }
             <div class="tl-company">TigerIT Bangladesh Ltd.</div>
             <div class="tl-period">OCT 2022 — FEB 2025</div>
           </div>
-          <div class="tl-role">Software Engineer QA</div>
+          <div class="tl-role">Software Engineer, QA</div>
           <ul class="tl-pts">
             <li>Designed, developed, and executed manual and automated test cases (smoke, black box, API, etc.) using Postman, SoapUI, Burp Suite, Selenium, and Robot Framework.</li>
-            <li>Contributed to government projects including Prisoner Inmate Database System (PIDS) and Managed ICT Support Service for ICT & e-Governance.</li>
-            <li>Analyzed SRS documents, creating clear test plans and mapping features to user personas.</li>
+                        <li>Analysed Software Requirement Specifications, creating clear test plans and mapping features to user personas.</li>
+            <li>Used user manuals and data flow / use case diagrams to optimise testing processes.</li>
             <li>Executed database queries to verify data integrity and performance.</li>
             <li>Conducted load testing with JMeter to assess performance under high user loads.</li>
           </ul>
@@ -1079,7 +1097,7 @@ footer span { color:var(--accent); }
             <div class="tl-company">Orion Group</div>
             <div class="tl-period">JUN 2022 — AUG 2022</div>
           </div>
-          <div class="tl-role">Senior Officer — IT Corporate Affairs & SAP PM Consultant</div>
+          <div class="tl-role">Senior Officer, IT Corporate Affairs · SAP PM Consultant</div>
           <ul class="tl-pts">
             <li>Led cross-functional teams to implement an ERP system, streamlining communication and processes.</li>
             <li>Identified and resolved software performance issues, ensuring system efficiency and uptime.</li>
@@ -1113,7 +1131,7 @@ footer span { color:var(--accent); }
         <div class="tl-card">
           <div class="tl-top">
             <div class="tl-company">Orion Group</div>
-            <div class="tl-period">OCT 2021 — FEB 2022</div>
+            <div class="tl-period">OCT 2021 — JAN 2022</div>
           </div>
           <div class="tl-role">Software Engineer Intern</div>
           <ul class="tl-pts">
@@ -1169,7 +1187,7 @@ footer span { color:var(--accent); }
     </a>
 
     <!-- FEATURED: STORECRAFT -->
-    <div class="proj-feature pf-rev reveal">
+    <a href="storecraft/" target="_blank" rel="noopener" class="proj-feature pf-rev reveal" aria-label="Open StoreCraft product page in a new tab">
       <div class="pf-text">
         <div class="pf-badges">
           <span class="pf-badge live">LIVE PRODUCT</span>
@@ -1188,16 +1206,49 @@ footer span { color:var(--accent); }
           <span class="tech-pill">Next.js 15</span><span class="tech-pill">TypeScript</span>
           <span class="tech-pill">PostgreSQL · Prisma</span><span class="tech-pill">Playwright</span>
         </div>
-        <a href="#contact" class="pf-cta">Request a demo <span class="pf-arrow">→</span></a>
+        <span class="pf-cta">Explore the product <span class="pf-arrow">↗</span></span>
       </div>
       <div class="pf-visual">
         <div class="pf-glow"></div>
         <div class="pf-frame">
           <div class="pf-bar"><i></i><i></i><i></i><span>storecraft / storefront</span></div>
-          <img src="projects/storecraft.jpg" alt="StoreCraft storefront on laptop and phone, with the admin portal" width="1440" height="810" loading="lazy">
+          <img src="storecraft/shots/01-hero.jpg" alt="StoreCraft storefront on laptop and phone, with the admin portal" width="1600" height="900" loading="lazy">
         </div>
         <div class="pf-float pf-f1"><b>3</b><span>web · android · ios</span></div>
       </div>
+    </a>
+  </div>
+</section>
+
+<!-- ===== PUBLICATIONS ===== -->
+<section id="publications">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-tag">// Research &amp; Credentials</div>
+      <h2 class="section-title">PUBLICATIONS</h2>
+    </div>
+    <div class="pub-grid">
+      <a class="pub-card reveal" href="https://doi.org/10.5281/zenodo.21851407" target="_blank" rel="noopener">
+        <div class="pub-meta"><span>ZENODO · 2026</span><span class="pub-doi">DOI ↗</span></div>
+        <h3 class="pub-title">A Cost-Efficient Unified Deep Learning System for Real-Time Face Mask Detection and Social-Distancing Monitoring</h3>
+        <p class="pub-authors"><b>M. N. Uddin</b>, M. M. R. Shakil and S. I. Hossain</p>
+        <div class="pub-id">10.5281/zenodo.21851407</div>
+      </a>
+      <a class="pub-card reveal" href="https://doi.org/10.63721/25JSEA0114" target="_blank" rel="noopener">
+        <div class="pub-meta"><span>J. SCIENTIFIC ENGINEERING ADVANCES · 2025</span><span class="pub-doi">DOI ↗</span></div>
+        <h3 class="pub-title">Size and Color Sorting of Solid Products Using a Conveyor Belt &amp; Swipe Arm</h3>
+        <p class="pub-authors">A. Al Fuad, A. B. Mridul and <b>MD Nasir Uddin</b> · Vol. 1, Issue 3, pp. 1–09</p>
+        <div class="pub-id">10.63721/25JSEA0114</div>
+      </a>
+    </div>
+
+    <div class="cert-head">// CERTIFICATIONS</div>
+    <div class="cert-grid">
+      <div class="cert reveal"><b>Postman API Fundamentals Student Expert</b><span>Canvas Credentials (Badgr) · Jul 2024</span></div>
+      <div class="cert reveal"><b>SQL (Basic)</b><span>HackerRank · Oct 2022</span></div>
+      <div class="cert reveal"><b>Practical Flutter — Real Life Projects for iOS &amp; Android</b><span>PencilBox Training Institute · Mar 2022</span></div>
+      <div class="cert reveal"><b>Python</b><span>Kaggle · Oct 2021</span></div>
+      <div class="cert reveal"><b>Web Development Bootcamp</b><span>Udemy (Programming Academy) · Oct 2020</span></div>
     </div>
   </div>
 </section>
@@ -1232,17 +1283,17 @@ footer span { color:var(--accent); }
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           LINKEDIN
         </a>
+        <a href="https://wa.me/8801799438398" target="_blank" rel="noopener" class="c-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.22 4.25-9.47 9.48-9.47 2.53 0 4.91.99 6.7 2.78a9.41 9.41 0 0 1 2.77 6.7c0 5.22-4.25 9.47-9.47 9.47zm8.06-17.53A11.3 11.3 0 0 0 12.04.63C5.76.63.65 5.74.65 12.02c0 2.01.52 3.97 1.52 5.7L.55 23.63l6.04-1.58a11.36 11.36 0 0 0 5.44 1.39c6.28 0 11.39-5.11 11.39-11.39 0-3.04-1.18-5.9-3.33-8.05z"/></svg>
+          WHATSAPP
+        </a>
+        <a href="assets/Md_Nasir_Uddin_CV.pdf" download class="c-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 21h16"/></svg>
+          DOWNLOAD CV
+        </a>
         <a href="https://github.com/nasirsunny50" target="_blank" class="c-link">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
           GITHUB
-        </a>
-        <a href="https://www.facebook.com/sup.sun" target="_blank" class="c-link">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          FACEBOOK
-        </a>
-        <a href="https://www.instagram.com/nasir___sunny" target="_blank" class="c-link">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          INSTAGRAM
         </a>
       </div>
       <a href="mailto:nasirsunny50@gmail.com" class="c-email">
@@ -1320,7 +1371,7 @@ document.querySelectorAll('.stat-num').forEach(el=>{
 
 /* ---- TYPING HERO TAG ---- */
 const tagEl = document.getElementById('heroTag');
-const tagText = '// Senior SQA Engineer — Fintech';
+const tagText = '// Senior SQA Engineer — Fintech & Mobile Banking';
 tagEl.textContent=''; tagEl.style.opacity=1;
 let ti=0;
 setTimeout(()=>{

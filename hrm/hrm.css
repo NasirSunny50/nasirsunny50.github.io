@@ -5,12 +5,16 @@
   --green:#1f8a43;--green-ink:#14632f;--deep:#0f2e1c;--deep2:#163d26;
   --mark:#c9f2b6;--lime:#b9f27c;
   --radius:10px;
+  --display:"Bricolage Grotesque","Manrope",system-ui,sans-serif;
+  --display-bn:"Anek Bangla","Hind Siliguri",sans-serif;
   --shadow:0 1px 0 rgba(22,32,26,.06),0 14px 30px -20px rgba(22,32,26,.35);
 }
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
-body{font:17px/1.65 "Plus Jakarta Sans","Hind Siliguri",system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body:not(.en){font-family:"Hind Siliguri","Plus Jakarta Sans",system-ui,sans-serif;line-height:1.75}
+body{font:17px/1.65 "Manrope","Hind Siliguri",system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body:not(.en){font-family:"Hind Siliguri","Manrope",system-ui,sans-serif;line-height:1.75}
+body:not(.en) h1,body:not(.en) h2,body:not(.en) h3,body:not(.en) .hero-stats strong,body:not(.en) .steps li::before{font-family:var(--display-bn);font-weight:700;letter-spacing:0}
+body:not(.en) h1{line-height:1.25}
 body.en [lang=bn],body:not(.en) [lang=en]{display:none}
 a{color:inherit}
 img{display:block;max-width:100%;height:auto}
@@ -38,7 +42,9 @@ nav .back{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border
 
 /* ---------- type ---------- */
 h1,h2{font-weight:700;line-height:1.12;letter-spacing:-.02em}
-body.en h1,body.en h2{font-family:"Fraunces",Georgia,serif;font-weight:600;letter-spacing:-.025em;font-variation-settings:"opsz" 96}
+body.en h1,body.en h2,body.en h3{font-family:var(--display);font-weight:700;letter-spacing:-.035em}
+body.en h1{font-weight:800;letter-spacing:-.045em;line-height:1.02}
+.logo span{font-family:var(--display);letter-spacing:-.03em}
 h1{font-size:clamp(36px,5.6vw,66px);max-width:17ch}
 h2{font-size:clamp(28px,3.6vw,44px);max-width:22ch}
 h3{font-size:19px;line-height:1.35;margin-bottom:6px;font-weight:700;letter-spacing:-.01em}
@@ -62,7 +68,7 @@ body:not(.en) .kicker{letter-spacing:0;text-transform:none;font-size:15px}
 .hero-stats div{padding:18px 20px 0 0}
 .hero-stats div+div{padding-left:20px;border-left:1px solid var(--line)}
 .hero-stats strong{display:block;font-size:30px;font-weight:800;line-height:1.1;letter-spacing:-.02em;color:var(--ink)}
-body.en .hero-stats strong{font-family:"Fraunces",Georgia,serif;font-weight:600}
+body.en .hero-stats strong{font-family:var(--display);font-weight:800;letter-spacing:-.04em}
 .hero-stats span{font-size:14px;color:var(--muted)}
 .hero-shot{position:relative;width:100%;margin:56px 0 0;padding:40px 40px 0;background:var(--deep);border-radius:14px 14px 0 0;overflow:hidden}
 .hero-shot::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1px);background-size:18px 18px;pointer-events:none}
@@ -93,12 +99,12 @@ section{padding:104px 0;position:relative;border-bottom:1px solid var(--line)}
 .feature.flip{grid-template-columns:7fr 5fr}
 .feature.flip .text{order:2}
 .feature h3{font-size:clamp(23px,2.5vw,30px);letter-spacing:-.02em;margin-bottom:12px;line-height:1.2}
-body.en .feature h3{font-family:"Fraunces",Georgia,serif;font-weight:600}
+body.en .feature h3{font-family:var(--display);font-weight:700;letter-spacing:-.03em}
 .feature .text>p{color:var(--muted);font-size:17px}
 .feature ul{list-style:none;padding:0;margin-top:20px;display:grid;gap:10px}
 .feature li{display:flex;gap:12px;align-items:flex-start}
 .feature li::before{content:"";flex:none;width:14px;height:8px;margin-top:9px;border-left:2.5px solid var(--green);border-bottom:2.5px solid var(--green);transform:rotate(-45deg)}
-.num{display:block;font-size:56px;line-height:1;font-weight:600;color:var(--mark);-webkit-text-stroke:1.5px var(--green);margin-bottom:14px;font-family:"Fraunces",Georgia,serif}
+.num{display:block;font-size:56px;line-height:1;font-weight:600;color:var(--mark);-webkit-text-stroke:1.5px var(--green);margin-bottom:14px;font-family:var(--display)}
 
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:96px}
 .grid3 figure{margin:0}
@@ -124,7 +130,7 @@ thead th{font-size:16px;font-weight:800;padding-top:24px;padding-bottom:18px;bor
 thead th:not(:first-child),td:not(:first-child){text-align:center}
 td:first-child{color:var(--muted);font-weight:500}
 .price{font-size:30px;font-weight:800;color:var(--ink);display:block;line-height:1.2;letter-spacing:-.02em}
-body.en .price{font-family:"Fraunces",Georgia,serif;font-weight:600}
+body.en .price{font-family:var(--display);font-weight:800;letter-spacing:-.04em}
 .per{font-size:13px;color:var(--muted)}
 .pick{background:#f1f9ec}
 thead th.pick{background:var(--deep);color:#fff;border-bottom-color:var(--deep)}
@@ -140,7 +146,7 @@ body:not(.en) thead th.pick::before{content:"সবচেয়ে জনপ্�
 .steps li{counter-increment:s;padding:24px 24px 0 0}
 .steps li+li{padding-left:24px;border-left:1px solid var(--line)}
 .steps li::before{content:counter(s,bengali);display:block;font-size:44px;line-height:1;font-weight:700;color:var(--green);margin-bottom:14px}
-body.en .steps li::before{content:"0" counter(s);font-family:"Fraunces",Georgia,serif;font-weight:600}
+body.en .steps li::before{content:"0" counter(s);font-family:var(--display);font-weight:800}
 .steps p{color:var(--muted);font-size:16px}
 
 /* faq */
@@ -219,3 +225,12 @@ body:not(.en) .foot-col h4{letter-spacing:0;text-transform:none;font-size:15px}
   *{transition:none!important;animation:none!important}
   .rv{opacity:1;transform:none}
 }
+
+/* full wordmark in header, WhatsApp icon */
+.logo-full img{width:auto;height:38px;border-radius:0}
+.wa::before{display:none}
+.wa{color:#fff}
+.wa-ico{flex:none;color:#25d366}
+.wa-link{display:inline-flex;align-items:center;gap:8px}
+.hero-stats strong span{font-size:inherit;color:inherit}
+body.en h1{max-width:20ch}

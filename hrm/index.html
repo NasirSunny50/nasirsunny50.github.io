@@ -8,10 +8,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="hrm.css">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
 </head>
 <body class="en">
 <header><div class="wrap">
-  <a class="logo" href="./"><i>HC</i>HRM Craft</a>
+  <a class="logo" href="./"><img src="logo.svg" alt="" width="34" height="34"><span>HRM <b>Craft</b></span></a>
   <nav aria-label="Main">
     <a class="back" href="../#projects">← <span>Portfolio</span></a>
     <a href="#features">Features</a>
@@ -179,7 +180,19 @@
   </div></div>
 </section>
 </main>
-<footer><div class="wrap"><span>HRM Craft · IntelliCraft Technologies · <a href="bn.html">বাংলা</a> · Names and figures in screenshots are sample data.</span><a href="../">← Md. Nasir Uddin · Portfolio</a></div></footer>
+<footer class="foot"><div class="wrap">
+  <div class="foot-top">
+    <div class="foot-brand">
+      <a class="logo" href="./"><img src="logo.svg" alt="" width="34" height="34" loading="lazy"><span>HRM <b>Craft</b></span></a>
+      <p>Attendance, leave, rosters and approvals in one place, on your own server.</p>
+      <a class="btn" href="#contact">Book a demo →</a>
+    </div>
+    <nav class="foot-col" aria-label="Product"><h4>Product</h4><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
+    <nav class="foot-col" aria-label="Contact"><h4>Contact</h4><a href="https://wa.me/8801799438398" target="_blank" rel="noopener">WhatsApp ↗</a><a href="#contact">Live demo</a></nav>
+    <nav class="foot-col" aria-label="Language"><h4>Language</h4><a href="./" aria-current="page">English</a><a href="bn.html#bn">বাংলা · বাংলাদেশ</a></nav>
+  </div>
+  <div class="foot-bottom"><span>© 2026 HRM Craft · IntelliCraft Technologies</span><a href="../" target="_blank" rel="noopener">Built by Md. Nasir Uddin ↗</a></div>
+</div></footer>
 <div class="lb" id="lb" role="dialog" aria-label="Screenshot preview"><img alt=""></div>
 <script>
 (function(){
@@ -200,7 +213,7 @@ addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open')})
 <script>
 document.getElementById('f').onsubmit=e=>{e.preventDefault();const d=new FormData(e.target),wa=document.getElementById('wa').textContent.replace(/\D/g,'');
 const t=`Demo request: ${d.get('n')}, ${d.get('c')}, ${d.get('p')}, ${d.get('s')}. ${d.get('m')}`;
-if(/^\d{10,15}$/.test(wa))location.href='https://wa.me/'+wa+'?text='+encodeURIComponent(t);
+if(/^\d{10,15}$/.test(wa)){document.getElementById('st').textContent='Opening WhatsApp… press Send there to reach us.';location.href='https://wa.me/'+wa+'?text='+encodeURIComponent(t);}
 else document.getElementById('st').textContent='Thanks. (Demo page: contact number not set yet.)';};
 </script>
 </body>
